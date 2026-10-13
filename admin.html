@@ -1,0 +1,1089 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <base target="_top">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#102f4b">
+    <title>宜中校園服務管理後台</title>
+    <style>
+  .heading-actions{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}
+  textarea{font:inherit;width:100%;padding:11px;border:1px solid #cfdce3;border-radius:11px;background:#fff;color:#173044;resize:vertical;line-height:1.6}.dialog--wide{width:min(760px,calc(100% - 26px))}.recipient-card{display:grid;gap:4px;padding:13px 15px;border:1px solid #dce5ea;border-radius:14px;background:#f6f9fa}.recipient-card strong{color:#102f4b;font-size:17px}.recipient-card span,.recipient-card small{color:#6c7f8f}.confirm-switch{padding:12px;border-radius:12px;background:#fff8df;color:#6d5213}.mail-center-grid{display:grid;grid-template-columns:minmax(280px,.7fr) minmax(420px,1.3fr);gap:16px;margin:16px 0}.mail-panel{display:grid;align-content:start;gap:13px}.mail-recipient-search{display:grid;grid-template-columns:1fr 170px auto;gap:9px;align-items:end}.mail-section{margin-top:16px}.mail-template-list{display:grid;gap:9px;margin-top:14px}.mail-template-card{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:13px 14px;border:1px solid #e1e8ec;border-radius:14px;background:#f9fbfc}.mail-template-card strong,.mail-template-card small{display:block}.mail-template-card small{margin-top:4px;color:#6c7f8f}.mail-scope{display:inline-flex;margin:0 7px 5px 0;padding:3px 7px;border-radius:999px;background:#e5edf2;color:#173f5f;font-size:10px;font-weight:900}.mail-log-table{min-width:1180px}.mail-error{color:#a63243}.mail-summary-grid .summary-card strong{font-size:27px}
+  .edu-card>div:first-child{min-width:min(680px,65vw)}.edu-links{display:grid;grid-template-columns:1fr 1fr auto;gap:9px;align-items:end;margin-top:13px}.edu-links input{min-width:0}
+  @media(max-width:800px){.edu-card>div:first-child{min-width:0}.edu-links{grid-template-columns:1fr}.edu-links .button{width:100%}.mail-center-grid{grid-template-columns:1fr}.mail-recipient-search{grid-template-columns:1fr}.mail-template-card{grid-template-columns:1fr}.mail-template-card .module-actions{justify-content:flex-start}}
+  .history-entry-form{margin-top:18px}.form-help{grid-column:1/-1;margin:0;color:#6c7f8f;line-height:1.55}
+  .history-selection-bar{display:flex;align-items:center;gap:14px;margin:14px 0}.history-selection-bar>span{flex:1;color:#6c7f8f;font-size:13px}.print-template{min-width:190px}.print-template select{min-height:42px}.student-check-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.student-check{display:flex;align-items:center;gap:10px;min-height:66px;padding:12px;border:1px solid #dce5ea;border-radius:14px;background:#fff;cursor:pointer}.student-check input{width:20px;height:20px}.student-check span,.student-check strong,.student-check small{display:block}.student-check small{margin-top:3px;color:#6c7f8f}
+  @media(max-width:900px){.student-check-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:560px){.student-check-grid{grid-template-columns:1fr}.history-selection-bar{align-items:stretch;flex-direction:column}.print-template{min-width:0}}
+  .error-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}
+  :root{--navy:#102f4b;--navy2:#173f5f;--ink:#173044;--muted:#6c7f8f;--bg:#f2f6f8;--paper:#fff;--line:#dce5ea;--gold:#efb94f;--green:#147565;--red:#a63243;--amber:#a96714;--blue:#176791}
+  *{box-sizing:border-box}[hidden]{display:none!important}html{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:var(--ink);background:var(--bg)}body{margin:0;min-height:100vh;background:radial-gradient(circle at 92% 0,#d9edf6 0,transparent 34rem),var(--bg)}button,input,select,a{font:inherit}.shell{width:min(1440px,100%);margin:auto;padding:20px clamp(14px,3vw,34px) 40px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:22px;padding:23px 26px;border-radius:24px;background:linear-gradient(135deg,#0a253c,#123f62 65%,#176b78);color:#fff;box-shadow:0 15px 42px rgba(16,47,75,.17)}.brand,.topbar__actions{display:flex;align-items:center;gap:15px}.brand-mark{width:58px;height:58px;display:grid;place-items:center;border-radius:17px;background:var(--gold);color:var(--navy);font-size:15px;font-weight:950}.eyebrow{margin:0;color:#168477;font-size:11px;font-weight:950;letter-spacing:.14em}.topbar .eyebrow{color:#b9e0e4}h1{margin:3px 0 0;font-size:clamp(25px,3.5vw,36px)}h2{margin:4px 0 5px;color:var(--navy);font-size:clamp(25px,3.5vw,34px)}h3{margin:3px 0;color:var(--navy)}.identity{text-align:right}.identity span,.identity strong,.identity small{display:block}.identity span{color:#f6d98f;font-size:12px;font-weight:900}.identity strong{font-size:17px}.identity small{color:#d7e6ed}.button{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:0 17px;border:0;border-radius:12px;font-weight:900;text-decoration:none;cursor:pointer}.button:disabled{opacity:.55;cursor:not-allowed}.button--primary{background:#147c6b;color:#fff}.button--dark{background:var(--navy);color:#fff}.button--light{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);color:#fff}.button--quiet{background:#e7eef2;color:var(--navy)}.button--danger{background:#fae7ea;color:var(--red)}.nav{position:sticky;top:8px;z-index:10;display:flex;gap:7px;margin:17px 0;padding:7px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.92);box-shadow:0 9px 27px rgba(18,56,79,.08);backdrop-filter:blur(12px)}.nav__item{flex:1;min-height:50px;border:0;border-radius:12px;background:transparent;color:var(--muted);font-weight:900;cursor:pointer}.nav__item>span{display:inline-grid;width:28px;height:28px;margin-right:7px;place-items:center;border-radius:9px;background:#e5edf2;color:var(--navy)}.nav__item>b{display:inline-grid;min-width:22px;height:22px;margin-left:5px;padding:0 6px;place-items:center;border-radius:999px;background:var(--red);color:#fff;font-size:11px}.nav__item.is-active{background:var(--navy);color:#fff}.nav__item.is-active>span{background:var(--gold)}.content{padding:10px 2px}.heading,.panel__heading{display:flex;justify-content:space-between;align-items:flex-end;gap:18px}.heading{margin:12px 0 18px}.muted,.result-meta{margin:4px 0 0;color:var(--muted);line-height:1.55}.summary-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}.summary-card{min-height:128px;padding:19px;border:1px solid var(--line);border-radius:19px;background:#fff;box-shadow:0 8px 22px rgba(23,48,68,.05)}.summary-card span{display:block;color:var(--muted);font-size:13px;font-weight:800}.summary-card strong{display:block;margin:8px 0 2px;color:var(--navy);font-size:32px}.summary-card small{color:var(--muted)}.summary-card[data-tone="alert"] strong{color:var(--red)}.summary-card[data-tone="good"] strong{color:var(--green)}.dashboard-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:16px;margin-top:17px}.panel{padding:22px;border:1px solid var(--line);border-radius:21px;background:#fff}.text-button{border:0;background:transparent;color:var(--blue);font-weight:900;cursor:pointer}.mini-list{display:grid;gap:9px;margin-top:15px}.mini-row{display:grid;grid-template-columns:100px 1fr auto;gap:12px;align-items:center;padding:12px;border-radius:13px;background:#f6f8fa}.mini-row strong,.mini-row small{display:block}.mini-row small{margin-top:3px;color:var(--muted)}.card-list{display:grid;gap:12px}.attendance-card,.slot-card{display:grid;align-items:center;gap:15px;padding:18px;border:1px solid var(--line);border-radius:19px;background:#fff}.attendance-card{grid-template-columns:130px 1fr auto}.slot-card{grid-template-columns:145px 1fr minmax(280px,auto)}.date-block{color:var(--navy);font-weight:950}.date-block small{display:block;margin-top:4px;color:var(--muted);font-weight:700}.person strong,.person span,.person small{display:block}.person span{margin:3px 0;color:var(--ink);font-weight:800}.person small{color:var(--muted)}.actions{display:flex;align-items:center;justify-content:flex-end;gap:8px}.hours{width:78px;height:44px;padding:0 9px;border:1px solid #cfdce3;border-radius:11px}.status{display:inline-flex;padding:5px 9px;border-radius:999px;background:#e9eef1;color:#596e7d;font-size:12px;font-weight:950}.status--BOOKED{background:#e3f1fa;color:#12628b}.status--COMPLETED{background:#e3f5ef;color:#0f7562}.status--NO_SHOW,.status--CANCELLED{background:#fae7ea;color:#9d3040}.filters{display:grid;grid-template-columns:1.5fr repeat(3,minmax(145px,.65fr)) auto;gap:10px;align-items:end;margin-bottom:15px;padding:15px;border:1px solid var(--line);border-radius:17px;background:#fff}.field{display:grid;gap:6px}.field span{color:#526b7b;font-size:12px;font-weight:900}.field input,.field select{width:100%;min-height:44px;padding:0 11px;border:1px solid #cfdce3;border-radius:11px;background:#fff;color:var(--ink)}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}.data-table{width:100%;border-collapse:collapse;min-width:940px}.data-table th,.data-table td{padding:13px 12px;text-align:left;border-bottom:1px solid #e6ecef;vertical-align:middle}.data-table th{position:sticky;top:0;background:#eef3f6;color:#496273;font-size:12px}.data-table td{font-size:14px}.data-table tr:last-child td{border-bottom:0}.student-search{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end}.slot-editor{display:flex;align-items:center;justify-content:flex-end;gap:9px}.switch{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:900}.switch input{width:20px;height:20px}.empty{padding:35px 20px;text-align:center;border:1px dashed #bccbd4;border-radius:17px;color:var(--muted);background:#fafcfd}.empty strong{display:block;margin-bottom:6px;color:var(--navy)}footer{display:flex;justify-content:space-between;gap:15px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}.loading,.error-screen{min-height:100vh;display:grid;place-content:center;gap:13px;padding:22px;text-align:center;color:var(--navy)}.loading .brand-mark{margin:auto;animation:pulse 1.2s infinite}.error-card{width:min(480px,100%);padding:34px;border-radius:25px;background:#fff;box-shadow:0 18px 50px rgba(16,47,75,.15)}.error-symbol{width:54px;height:54px;display:grid;margin:auto;place-items:center;border-radius:50%;background:#fae7ea;color:var(--red);font-size:27px;font-weight:950}.error-card p{color:var(--muted);line-height:1.65}.dialog{width:min(610px,calc(100% - 26px));padding:0;border:0;border-radius:24px;box-shadow:0 25px 75px rgba(18,43,60,.3)}.dialog::backdrop{background:rgba(10,30,44,.65);backdrop-filter:blur(3px)}.dialog form{position:relative;display:grid;gap:15px;padding:28px}.dialog h2{margin:0}.dialog__close{position:absolute;right:14px;top:14px;width:39px;height:39px;border:0;border-radius:50%;background:#edf2f4;color:var(--navy);font-size:23px;cursor:pointer}.dialog-note{margin:0;padding:12px;border-radius:12px;background:#f2f6f8;color:var(--muted);line-height:1.55}.dialog-actions{display:grid;grid-template-columns:1fr 1.5fr;gap:9px}.busy{position:fixed;inset:0;z-index:50;display:grid;place-content:center;gap:12px;text-align:center;background:rgba(242,246,248,.78);backdrop-filter:blur(4px);color:var(--navy)}.spinner{width:42px;height:42px;margin:auto;border:4px solid #cbdce5;border-top-color:var(--green);border-radius:50%;animation:spin .7s linear infinite}.toast{position:fixed;z-index:60;left:50%;bottom:22px;transform:translate(-50%,150%);width:min(500px,calc(100% - 28px));padding:14px 17px;border-radius:13px;background:#233f50;color:#fff;text-align:center;transition:transform .2s}.toast.is-visible{transform:translate(-50%,0)}.toast.is-error{background:var(--red)}@keyframes spin{to{transform:rotate(360deg)}}@keyframes pulse{50%{transform:scale(1.05)}}
+  .security-note{margin:0 0 16px;padding:14px 16px;border:1px solid #e5c776;border-radius:14px;background:#fff8df;color:#6d5213;line-height:1.55}.module-form{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:11px;align-items:end;margin-bottom:17px;padding:18px;border:1px solid var(--line);border-radius:18px;background:#fff}.module-form h3{grid-column:1/-1}.field--wide{min-width:0}.module-list{margin-top:14px}.module-card{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;padding:19px;border:1px solid var(--line);border-radius:19px;background:#fff}.module-card p{margin:7px 0;color:var(--ink)}.module-card small{color:var(--muted);line-height:1.5}.module-actions{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex-wrap:wrap}.history-picker{display:grid;grid-template-columns:minmax(260px,1fr) auto minmax(330px,1fr) auto;gap:11px;align-items:end;padding:18px;border:1px solid var(--line);border-radius:18px;background:#fff}
+  @media(max-width:1050px){.summary-grid{grid-template-columns:repeat(3,1fr)}.filters{grid-template-columns:repeat(2,1fr)}.filters .field--wide{grid-column:1/-1}.filters>.button{grid-column:1/-1}.slot-card{grid-template-columns:120px 1fr}.slot-editor{grid-column:1/-1;justify-content:flex-start}.module-form{grid-template-columns:repeat(2,1fr)}.history-picker{grid-template-columns:1fr auto}}
+  @media(max-width:720px){.shell{padding:10px 10px 28px}.topbar{align-items:flex-start;padding:17px;border-radius:19px}.brand-mark{width:46px;height:46px;border-radius:13px}.topbar .eyebrow{display:none}.topbar__actions{align-items:flex-end;flex-direction:column}.identity small{display:none}.button--light{min-height:38px;padding:0 11px;font-size:12px}.nav{overflow-x:auto;justify-content:flex-start}.nav__item{flex:0 0 auto;padding:0 13px}.summary-grid{grid-template-columns:repeat(2,1fr)}.dashboard-grid{grid-template-columns:1fr}.attendance-card,.slot-card,.module-card{grid-template-columns:1fr}.actions,.slot-editor,.module-actions{justify-content:flex-start;flex-wrap:wrap}.filters,.module-form,.history-picker{grid-template-columns:1fr}.filters .field--wide,.filters>.button{grid-column:auto}.heading{align-items:flex-start}.heading .button{flex:0 0 auto}.mini-row{grid-template-columns:80px 1fr}.mini-row>:last-child{grid-column:2}footer{flex-direction:column}.student-search{grid-template-columns:1fr}.dialog form{padding:24px 19px}}
+</style>
+
+  <style>.demo-ribbon{position:fixed;z-index:9999;right:14px;bottom:12px;padding:8px 12px;border-radius:999px;background:#fff7dc;color:#765000;border:1px solid #e4bd5b;box-shadow:0 5px 18px rgba(0,0,0,.12);font:800 12px/1.2 "Microsoft JhengHei",sans-serif}@media print{.demo-ribbon{display:none}}</style></head>
+  <body>
+    <section id="loading" class="loading" role="status">
+      <div class="brand-mark">管理</div>
+      <p id="adminLoadingText">管理後台 v1.4.0｜正在驗證管理員權限並整理資料…</p>
+    </section>
+
+    <div id="adminApp" class="shell" hidden>
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">宜中</div>
+          <div><p class="eyebrow">YLSH CAMPUS ADMIN</p><h1>校園服務管理後台</h1></div>
+        </div>
+        <div class="topbar__actions">
+          <div class="identity"><span id="adminRole">—</span><strong id="adminName">—</strong><small id="adminUnit">—</small></div>
+          <a id="portalLink" class="button button--light" href="#">返回服務首頁</a>
+        </div>
+      </header>
+
+      <nav class="nav" aria-label="管理功能">
+        <button class="nav__item is-active" type="button" data-view="dashboard"><span>總</span>管理總覽</button>
+        <button class="nav__item" type="button" data-view="attendance"><span>點</span>今日點名 <b id="todayBadge">0</b></button>
+        <button class="nav__item" type="button" data-view="bookings"><span>約</span>預約管理</button>
+        <button class="nav__item" type="button" data-view="slots"><span>時</span>服務時段</button>
+        <button class="nav__item" type="button" data-view="blood" data-super-only><span>血</span>捐血管理</button>
+        <button class="nav__item" type="button" data-view="education" data-super-only><span>測</span>前後測管理</button>
+        <button class="nav__item" type="button" data-view="history" data-super-only><span>歷</span>志工履歷列印</button>
+        <button class="nav__item" type="button" data-view="mail" data-super-only><span>信</span>郵件中心</button>
+      </nav>
+
+      <main class="content">
+        <section id="dashboardView" class="view">
+          <div class="heading"><div><p class="eyebrow">OVERVIEW</p><h2>今天的管理重點</h2></div><button class="button button--quiet" type="button" data-refresh>重新整理</button></div>
+          <div id="summaryGrid" class="summary-grid"></div>
+          <div class="dashboard-grid">
+            <section class="panel"><div class="panel__heading"><div><p class="eyebrow">TODAY</p><h3>今日服務</h3></div><button class="text-button" type="button" data-go="attendance">前往點名 →</button></div><div id="todayPreview"></div></section>
+            <section class="panel"><div class="panel__heading"><div><p class="eyebrow">UPCOMING</p><h3>近期時段</h3></div><button class="text-button" type="button" data-go="slots">管理時段 →</button></div><div id="slotPreview"></div></section>
+          </div>
+        </section>
+
+        <section id="attendanceView" class="view" hidden>
+          <div class="heading"><div><p class="eyebrow">TODAY ATTENDANCE</p><h2>今日點名</h2><p class="muted">直接完成報到或標記爽約；需要聯絡時，可由學生卡片快速寄送校內 Email。</p></div><button class="button button--quiet" type="button" data-refresh>重新整理</button></div>
+          <div id="attendanceList" class="card-list"></div>
+        </section>
+
+        <section id="bookingsView" class="view" hidden>
+          <div class="heading"><div><p class="eyebrow">BOOKINGS</p><h2>預約管理</h2></div><button id="openCreateBooking" class="button button--primary" type="button">＋ 代為新增預約</button></div>
+          <form id="bookingFilters" class="filters">
+            <label class="field field--wide"><span>學生／學號／預約編號</span><input id="bookingQuery" type="search" placeholder="輸入關鍵字"></label>
+            <label class="field"><span>狀態</span><select id="bookingStatus"><option value="ALL">全部狀態</option><option value="BOOKED">已預約</option><option value="COMPLETED">已完成</option><option value="NO_SHOW">爽約</option><option value="CANCELLED">已取消</option></select></label>
+            <label class="field"><span>開始日期</span><input id="bookingFrom" type="date"></label>
+            <label class="field"><span>結束日期</span><input id="bookingTo" type="date"></label>
+            <button class="button button--dark" type="submit">查詢</button>
+          </form>
+          <p id="bookingResultMeta" class="result-meta"></p>
+          <div id="bookingList" class="table-wrap"></div>
+        </section>
+
+        <section id="slotsView" class="view" hidden>
+          <div class="heading"><div><p class="eyebrow">SERVICE SLOTS</p><h2>服務時段</h2><p class="muted">可調整未來時段名額及開放狀態；名額不得低於已預約人數。</p></div><button class="button button--quiet" type="button" data-refresh>重新整理</button></div>
+          <div id="slotList" class="card-list"></div>
+        </section>
+
+        <section id="bloodView" class="view" hidden>
+          <div class="heading"><div><p class="eyebrow">BLOOD DONATION</p><h2>捐血活動與名單</h2><p class="muted">活動預設關閉；學生名冊匯入後，可在此隨時開放或關閉報名。列印表供學生公假申請、活動點名及缺曠核對，不含出生日期。</p></div><div class="heading-actions"><button id="cleanupBloodDataButton" class="button button--quiet" type="button">清除到期生日資料</button><button class="button button--quiet" type="button" data-module-refresh="blood">重新整理</button></div></div>
+          <div id="bloodReadiness" class="security-note"></div>
+          <form id="createBloodEventForm" class="module-form">
+            <h3>建立捐血活動</h3>
+            <label class="field field--wide"><span>活動名稱</span><input id="bloodEventName" type="text" required></label>
+            <label class="field"><span>活動日期</span><input id="bloodEventDate" type="date" required></label>
+            <label class="field"><span>開始時間</span><input id="bloodStartTime" type="time" required></label>
+            <label class="field"><span>結束時間</span><input id="bloodEndTime" type="time" required></label>
+            <label class="field field--wide"><span>地點</span><input id="bloodLocation" type="text" required></label>
+            <label class="switch field--wide"><input id="bloodOpenImmediately" type="checkbox">建立後立即開放報名</label>
+            <button class="button button--primary" type="submit">建立活動</button>
+          </form>
+          <div id="bloodEventList" class="card-list module-list"></div>
+        </section>
+
+        <section id="educationView" class="view" hidden>
+          <div class="heading"><div><p class="eyebrow">HIV EDUCATION FORMS</p><h2>愛滋教育前後測</h2><p class="muted">管理員先在「教育活動」貼入表單連結；「活動啟用」控制網站期間，前測與後測入口可分別開關。</p></div><button class="button button--quiet" type="button" data-module-refresh="education">重新整理</button></div>
+          <div class="security-note">此區僅限 SUPER_ADMIN。這裡控制網站是否顯示入口，不會修改 Google 表單本身的「接受回覆」設定。</div>
+          <form id="createEducationCampaignForm" class="module-form">
+            <h3>建立教育活動並設定表單連結</h3>
+            <label class="field field--wide"><span>活動名稱</span><input id="educationCampaignName" type="text" required></label>
+            <label class="field"><span>開始日期</span><input id="educationStartDate" type="date" required></label>
+            <label class="field"><span>結束日期</span><input id="educationEndDate" type="date" required></label>
+            <label class="field field--wide"><span>前測表單連結</span><input id="educationPretestUrl" type="url" placeholder="https://..."></label>
+            <label class="field field--wide"><span>後測表單連結</span><input id="educationPosttestUrl" type="url" placeholder="https://..."></label>
+            <button class="button button--primary" type="submit">建立活動</button>
+          </form>
+          <div id="educationCampaignList" class="card-list module-list"></div>
+        </section>
+
+        <section id="historyView" class="view" hidden>
+          <div class="heading"><div><p class="eyebrow">VOLUNTEER HISTORY</p><h2>學生志工服務履歷</h2><p class="muted">完成點名後會自動建立歷程；列印時也會補入尚未回填的已完成預約。</p></div><button id="backfillHistoryButton" class="button button--quiet" type="button">同步已完成紀錄</button></div>
+          <div class="security-note">履歷查詢、列印及寄送僅限 SUPER_ADMIN；每位學生會收到自己的履歷，所有操作均寫入紀錄。</div>
+          <div class="history-picker">
+            <label class="field"><span>年級</span><select id="historyGrade"><option value="">全部年級</option></select></label>
+            <label class="field"><span>班級</span><select id="historyClass"><option value="">全部班級</option></select></label>
+            <label class="field field--wide"><span>搜尋學生</span><input id="historyStudentQuery" type="search" placeholder="姓名、座號、學號或 Email"></label>
+            <button id="historySearchButton" class="button button--quiet" type="button">套用篩選</button>
+          </div>
+          <div class="history-selection-bar"><label class="switch"><input id="historySelectAll" type="checkbox">勾選目前結果</label><span id="historyResultMeta">尚未載入學生</span><label class="field print-template"><span>列印／附件版面</span><select id="historyPrintTemplate"><option value="YLSH_BLUE_GOLD">宜中藍金版</option><option value="FORMAL_CERTIFICATE">正式認證版</option><option value="CLEAN_TABLE">乾淨純表格版</option></select></label><button id="emailHistoryButton" class="button button--dark" type="button">寄送勾選學生履歷</button><button id="printHistoryButton" class="button button--primary" type="button">批次列印勾選學生</button></div>
+          <div id="historyStudentList" class="student-check-grid"></div>
+          <form id="manualHistoryForm" class="module-form history-entry-form">
+            <h3>新增志工服務紀錄</h3>
+            <p class="form-help">先在上方只勾選一位學生，再填寫本筆紀錄。狀態固定為「志工」，認證單位預設與服務單位相同。</p>
+            <label class="field"><span>日期</span><input id="historyServiceDate" type="date" required></label>
+            <label class="field"><span>服務單位</span><select id="historyUnit" required></select></label>
+            <label class="field field--wide"><span>項目（工作內容）</span><input id="historyContent" type="text" required></label>
+            <label class="field"><span>時數</span><select id="historyHours" required><option value="0.5">0.5</option><option value="1">1</option><option value="1.5">1.5</option><option value="2">2</option><option value="2.5">2.5</option><option value="3">3</option></select></label>
+            <label class="field"><span>狀態</span><input value="志工" disabled></label>
+            <label class="field"><span>認證單位</span><input id="historyCertificationUnit" type="text" placeholder="預設同服務單位"></label>
+            <label class="field field--wide"><span>備註（非必填）</span><input id="historyNotes" type="text"></label>
+            <button class="button button--primary" type="submit">新增紀錄</button>
+          </form>
+        </section>
+
+        <section id="mailView" class="view" hidden>
+          <div class="heading"><div><p class="eyebrow">MAIL CENTER</p><h2>EMAIL 寄送中心</h2><p class="muted">集中管理校內通知、範本、額度與寄送紀錄；功能頁的快速寄信也會記錄在這裡。</p></div><div class="heading-actions"><button id="initializeMailModuleButton" class="button button--quiet" type="button">初始化／修復郵件模組</button><button id="refreshMailCenterButton" class="button button--quiet" type="button">重新整理</button></div></div>
+          <div id="mailModeNotice" class="security-note">郵件中心尚未載入。</div>
+          <div id="mailSummaryGrid" class="summary-grid mail-summary-grid"></div>
+          <div class="mail-center-grid">
+            <form id="mailSettingsForm" class="panel mail-panel">
+              <div class="panel__heading"><div><p class="eyebrow">DELIVERY CONTROL</p><h3>寄送控制</h3></div></div>
+              <label class="switch"><input id="mailEnabled" type="checkbox">啟用郵件寄送</label>
+              <label class="switch"><input id="mailTestMode" type="checkbox">測試模式：全部改寄操作管理員</label>
+              <label class="field"><span>寄件者顯示名稱</span><input id="mailSenderName" type="text" maxlength="80" required></label>
+              <label class="field"><span>回覆地址（可留空）</span><input id="mailReplyTo" type="email" placeholder="校內承辦信箱"></label>
+              <button class="button button--dark" type="submit">儲存寄送設定</button>
+            </form>
+
+            <form id="mailComposeForm" class="panel mail-panel">
+              <div class="panel__heading"><div><p class="eyebrow">ROSTER ONLY</p><h3>由校內清冊寄送</h3></div></div>
+              <div class="mail-recipient-search">
+                <label class="field field--wide"><span>搜尋姓名、帳號、班級或單位</span><input id="mailRecipientQuery" type="search" placeholder="輸入關鍵字"></label>
+                <label class="field"><span>類型</span><select id="mailRecipientType"><option value="ALL">學生及教職員</option><option value="STUDENT">學生</option><option value="STAFF">教職員</option></select></label>
+                <button id="mailRecipientSearchButton" class="button button--quiet" type="button">搜尋</button>
+              </div>
+              <label class="field"><span>收件人</span><select id="mailRecipientSelect" required><option value="">請先搜尋清冊</option></select></label>
+              <label class="field"><span>範本</span><select id="mailGeneralTemplate" required></select></label>
+              <button id="mailPrepareButton" class="button button--quiet" type="button">載入範本預覽</button>
+              <label class="field"><span>主旨</span><input id="mailGeneralSubject" type="text" maxlength="160" required></label>
+              <label class="field"><span>內容</span><textarea id="mailGeneralBody" rows="9" maxlength="8000" required></textarea></label>
+              <label class="switch confirm-switch"><input id="mailGeneralConfirm" type="checkbox">我已確認收件人、主旨及內容</label>
+              <button id="mailGeneralSendButton" class="button button--primary" type="submit">寄送 EMAIL</button>
+            </form>
+          </div>
+
+          <section class="panel mail-section">
+            <div class="panel__heading"><div><p class="eyebrow">TEMPLATES</p><h3>通知範本</h3></div><small>僅 SUPER_ADMIN 可修改</small></div>
+            <div id="mailTemplateList" class="mail-template-list"></div>
+          </section>
+
+          <section class="panel mail-section">
+            <div class="panel__heading"><div><p class="eyebrow">AUDIT TRAIL</p><h3>近期寄送紀錄</h3></div><small>「已交付」不等同已讀或保證送達收件匣</small></div>
+            <div id="mailLogList" class="table-wrap"></div>
+          </section>
+        </section>
+
+        <footer><span id="updatedAt"></span><span>管理後台 v1.4.0｜所有異動與寄送均由後端重新驗證並寫入操作紀錄。</span></footer>
+      </main>
+    </div>
+
+    <section id="errorScreen" class="error-screen" hidden>
+      <div class="error-card"><div class="error-symbol">!</div><h1>無法開啟管理後台</h1><p id="errorMessage"></p><div class="error-actions"><button id="adminRetryButton" class="button button--primary" type="button">重新嘗試</button><a id="errorPortalLink" class="button button--dark" href="#">返回服務首頁</a></div></div>
+    </section>
+
+    <dialog id="createBookingDialog" class="dialog">
+      <form id="createBookingForm">
+        <button class="dialog__close" type="button" data-dialog-close aria-label="關閉">×</button>
+        <p class="eyebrow">ADMIN BOOKING</p><h2>代為新增預約</h2>
+        <div class="student-search"><label class="field field--wide"><span>搜尋學生</span><input id="studentQuery" type="search" placeholder="姓名、班級、座號、學號或 Email"></label><button id="searchStudentButton" class="button button--quiet" type="button">搜尋</button></div>
+        <label class="field"><span>選擇學生</span><select id="studentSelect" required><option value="">請先搜尋學生</option></select></label>
+        <label class="field"><span>服務時段</span><select id="createSlotSelect" required></select></label>
+        <label class="field"><span>服務目的</span><select id="createPurposeSelect" required></select></label>
+        <p class="dialog-note">送出時仍會重新檢查學生、權限、時段及容量；管理員例外規則依系統設定執行。</p>
+        <div class="dialog-actions"><button class="button button--quiet" type="button" data-dialog-close>取消</button><button id="createBookingButton" class="button button--primary" type="submit">建立預約</button></div>
+      </form>
+    </dialog>
+
+    <dialog id="bookingMailDialog" class="dialog dialog--wide">
+      <form id="bookingMailForm">
+        <button class="dialog__close" type="button" data-dialog-close aria-label="關閉">×</button>
+        <p class="eyebrow">QUICK EMAIL</p><h2>寄送學生服務通知</h2>
+        <div id="bookingMailRecipient" class="recipient-card"></div>
+        <label class="field"><span>通知範本</span><select id="bookingMailTemplate" required></select></label>
+        <label class="field"><span>主旨</span><input id="bookingMailSubject" type="text" maxlength="160" required></label>
+        <label class="field"><span>內容</span><textarea id="bookingMailBody" rows="10" maxlength="8000" required></textarea></label>
+        <div id="bookingMailMode" class="dialog-note"></div>
+        <label class="switch confirm-switch"><input id="bookingMailConfirm" type="checkbox">我已確認收件人、主旨及內容</label>
+        <div class="dialog-actions"><button class="button button--quiet" type="button" data-dialog-close>取消</button><button id="bookingMailSendButton" class="button button--primary" type="submit">確認寄送</button></div>
+      </form>
+    </dialog>
+
+    <dialog id="historyMailDialog" class="dialog dialog--wide">
+      <form id="historyMailForm">
+        <button class="dialog__close" type="button" data-dialog-close aria-label="關閉">×</button>
+        <p class="eyebrow">HISTORY EMAIL</p><h2>寄送學生志工履歷</h2>
+        <div id="historyMailSummary" class="recipient-card"></div>
+        <label class="field"><span>首位學生郵件主旨預覽</span><input id="historyMailSubjectPreview" type="text" readonly></label>
+        <label class="field"><span>首位學生郵件內容預覽</span><textarea id="historyMailBodyPreview" rows="8" readonly></textarea></label>
+        <div id="historyMailMode" class="dialog-note"></div>
+        <label class="switch confirm-switch"><input id="historyMailConfirm" type="checkbox">我已確認名單、履歷版面及寄送模式</label>
+        <div class="dialog-actions"><button class="button button--quiet" type="button" data-dialog-close>取消</button><button id="historyMailSendButton" class="button button--primary" type="submit">開始逐位寄送</button></div>
+      </form>
+    </dialog>
+
+    <dialog id="mailTemplateDialog" class="dialog dialog--wide">
+      <form id="mailTemplateForm">
+        <button class="dialog__close" type="button" data-dialog-close aria-label="關閉">×</button>
+        <p class="eyebrow">MAIL TEMPLATE</p><h2>編輯通知範本</h2>
+        <input id="mailTemplateKey" type="hidden">
+        <label class="field"><span>範本名稱</span><input id="mailTemplateName" type="text" maxlength="80" required></label>
+        <label class="field"><span>主旨範本</span><input id="mailTemplateSubject" type="text" maxlength="160" required></label>
+        <label class="field"><span>內容範本</span><textarea id="mailTemplateBody" rows="11" maxlength="8000" required></textarea></label>
+        <label class="switch"><input id="mailTemplateActive" type="checkbox">啟用此範本</label>
+        <p class="dialog-note">可保留例如 {{student_name}}、{{service_date}}、{{unit_name}}、{{total_hours}} 等變數；寄送時由後端代入。</p>
+        <div class="dialog-actions"><button class="button button--quiet" type="button" data-dialog-close>取消</button><button class="button button--primary" type="submit">儲存範本</button></div>
+      </form>
+    </dialog>
+
+    <div id="busyOverlay" class="busy" hidden><div class="spinner"></div><strong id="busyText">處理中…</strong></div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="mock-gas.js"></script>
+<script>
+  const ADMIN_CLIENT_VERSION = '1.4.0';
+  const adminState = {
+    data: null, currentView: 'dashboard', requestId: 0, timeoutId: null,
+    blood: null, education: null, mail: null, historyLoaded: false,
+    bookingMail: null, historyMail: null, generalMail: null
+  };
+  const adminStatusLabels = { BOOKED:'已預約', COMPLETED:'已完成', NO_SHOW:'爽約', CANCELLED:'已取消' };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    bindAdminEvents();
+    loadAdminHome();
+  });
+
+  function bindAdminEvents() {
+    document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => switchAdminView(button.dataset.view)));
+    document.querySelectorAll('[data-go]').forEach(button => button.addEventListener('click', () => switchAdminView(button.dataset.go)));
+    document.querySelectorAll('[data-refresh]').forEach(button => button.addEventListener('click', loadAdminHome));
+    document.querySelectorAll('[data-dialog-close]').forEach(button => button.addEventListener('click', () => {
+      const dialog = button.closest('dialog');
+      if (dialog) dialog.close();
+    }));
+    document.getElementById('bookingFilters').addEventListener('submit', searchAdminBookings);
+    document.getElementById('openCreateBooking').addEventListener('click', openAdminCreateDialog);
+    document.getElementById('searchStudentButton').addEventListener('click', searchAdminStudents);
+    document.getElementById('studentQuery').addEventListener('keydown', event => { if (event.key === 'Enter') { event.preventDefault(); searchAdminStudents(); } });
+    document.getElementById('createBookingForm').addEventListener('submit', createAdminBooking);
+    document.querySelectorAll('[data-module-refresh]').forEach(button => button.addEventListener('click', () => loadAdminModule(button.dataset.moduleRefresh, true)));
+    document.getElementById('createBloodEventForm').addEventListener('submit', createBloodEvent);
+    document.getElementById('cleanupBloodDataButton').addEventListener('click', cleanupExpiredBloodData);
+    document.getElementById('createEducationCampaignForm').addEventListener('submit', createEducationCampaign);
+    document.getElementById('historySearchButton').addEventListener('click', searchHistoryStudents);
+    document.getElementById('historyStudentQuery').addEventListener('keydown', event => { if (event.key === 'Enter') { event.preventDefault(); searchHistoryStudents(); } });
+    document.getElementById('historyGrade').addEventListener('change', searchHistoryStudents);
+    document.getElementById('historyClass').addEventListener('change', searchHistoryStudents);
+    document.getElementById('historySelectAll').addEventListener('change', event => { document.querySelectorAll('[data-history-student]').forEach(input => { input.checked = event.target.checked; }); updateHistorySelectionMeta(); });
+    document.getElementById('printHistoryButton').addEventListener('click', printStudentHistory);
+    document.getElementById('emailHistoryButton').addEventListener('click', prepareHistoryEmailBatch);
+    document.getElementById('backfillHistoryButton').addEventListener('click', backfillServiceHistory);
+    document.getElementById('manualHistoryForm').addEventListener('submit', createManualHistory);
+    document.getElementById('adminRetryButton').addEventListener('click', () => loadAdminHome(0));
+    document.getElementById('historyUnit').addEventListener('change', event => { if (!document.getElementById('historyCertificationUnit').value) { const option = event.target.options[event.target.selectedIndex]; document.getElementById('historyCertificationUnit').placeholder = option ? option.textContent : '預設同服務單位'; } });
+    document.getElementById('bookingMailTemplate').addEventListener('change', reloadBookingMailTemplate);
+    document.getElementById('bookingMailForm').addEventListener('submit', sendBookingMail);
+    document.getElementById('historyMailForm').addEventListener('submit', sendHistoryMailBatch);
+    document.getElementById('initializeMailModuleButton').addEventListener('click', initializeMailModule);
+    document.getElementById('refreshMailCenterButton').addEventListener('click', () => loadMailCenter(true));
+    document.getElementById('mailSettingsForm').addEventListener('submit', saveMailSettings);
+    document.getElementById('mailRecipientSearchButton').addEventListener('click', searchMailRecipients);
+    document.getElementById('mailRecipientQuery').addEventListener('keydown', event => { if (event.key === 'Enter') { event.preventDefault(); searchMailRecipients(); } });
+    document.getElementById('mailPrepareButton').addEventListener('click', prepareGeneralMail);
+    document.getElementById('mailGeneralTemplate').addEventListener('change', () => { if (document.getElementById('mailRecipientSelect').value) prepareGeneralMail(); });
+    document.getElementById('mailComposeForm').addEventListener('submit', sendGeneralMail);
+    document.getElementById('mailTemplateForm').addEventListener('submit', saveMailTemplate);
+  }
+
+  function loadAdminHome(attempt = 0) {
+    const requestId = ++adminState.requestId;
+    clearTimeout(adminState.timeoutId);
+    document.getElementById('errorScreen').hidden = true;
+    document.getElementById('loading').hidden = false;
+    document.getElementById('adminApp').hidden = true;
+    document.getElementById('adminLoadingText').textContent = attempt
+      ? `管理後台 v${ADMIN_CLIENT_VERSION}｜第一次讀取逾時，正在自動重試…`
+      : `管理後台 v${ADMIN_CLIENT_VERSION}｜正在驗證管理員權限並整理資料…`;
+    setAdminBusy(false);
+    adminState.timeoutId = setTimeout(() => {
+      if (requestId !== adminState.requestId) return;
+      if (attempt < 1) {
+        loadAdminHome(attempt + 1);
+        return;
+      }
+      adminState.requestId += 1;
+      showAdminFatal({ message: '後台讀取已超過 30 秒。請按「重新嘗試」；若持續發生，請確認已部署最新版本並檢查學生清冊中的大量空白核取方塊列。' });
+    }, 30000);
+    google.script.run
+      .withSuccessHandler(data => {
+        if (requestId !== adminState.requestId) return;
+        clearTimeout(adminState.timeoutId);
+        if (String(data.app_version || '') !== ADMIN_CLIENT_VERSION) {
+          showAdminFatal({ message: `前後端版本不同（網頁 ${ADMIN_CLIENT_VERSION}／伺服器 ${data.app_version || '未知'}）。請重新部署新版本後按 Ctrl+F5。` });
+          return;
+        }
+        adminState.data = data;
+        renderAdminAll();
+        setAdminBusy(false);
+        document.getElementById('loading').hidden = true;
+        document.getElementById('errorScreen').hidden = true;
+        document.getElementById('adminApp').hidden = false;
+      })
+      .withFailureHandler(error => {
+        if (requestId !== adminState.requestId) return;
+        clearTimeout(adminState.timeoutId);
+        if (attempt < 1) {
+          setTimeout(() => { if (requestId === adminState.requestId) loadAdminHome(attempt + 1); }, 800);
+          return;
+        }
+        showAdminFatal(error);
+      })
+      .ADMIN_getHomeData();
+  }
+
+  function renderAdminAll() {
+    const data = adminState.data;
+    document.getElementById('adminRole').textContent = data.identity.role_label;
+    document.getElementById('adminName').textContent = data.identity.name;
+    document.getElementById('adminUnit').textContent = data.identity.unit_name;
+    document.getElementById('updatedAt').textContent = `資料更新：${data.generated_at}`;
+    document.getElementById('portalLink').href = `${data.base_url}?page=portal`;
+    document.getElementById('errorPortalLink').href = `${data.base_url}?page=portal`;
+    document.getElementById('todayBadge').textContent = data.summary.today_pending;
+    document.querySelectorAll('[data-super-only]').forEach(element => { element.hidden = data.identity.role !== 'SUPER_ADMIN'; });
+    renderAdminSummary();
+    renderTodayPreview();
+    renderSlotPreview();
+    renderAttendance();
+    renderBookingTable(data.recent_bookings, data.recent_bookings.length);
+    renderSlots();
+    populateCreateOptions();
+    populateHistoryUnits();
+  }
+
+  function renderAdminSummary() {
+    const summary = adminState.data.summary;
+    const cards = [
+      ['今日預約', summary.today_total, '今天全部紀錄', ''],
+      ['待點名', summary.today_pending, '尚未完成處理', summary.today_pending ? 'alert' : 'good'],
+      ['有效預約', summary.active_bookings, '目前 BOOKED 總數', ''],
+      ['本月完成', summary.completed_month, '已完成服務', 'good'],
+      ['本月爽約', summary.no_show_month, '需要追蹤', summary.no_show_month ? 'alert' : ''],
+      ['暫停時段', summary.closed_slots, '預約窗口內', '']
+    ];
+    document.getElementById('summaryGrid').innerHTML = cards.map(card => `<article class="summary-card" data-tone="${card[3]}"><span>${escapeAdminHtml(card[0])}</span><strong>${card[1]}</strong><small>${escapeAdminHtml(card[2])}</small></article>`).join('');
+  }
+
+  function renderTodayPreview() {
+    const rows = adminState.data.today.slice(0, 5);
+    document.getElementById('todayPreview').innerHTML = rows.length ? `<div class="mini-list">${rows.map(row => `<div class="mini-row"><strong>${escapeAdminHtml(row.start_time)}<small>${escapeAdminHtml(row.slot_label)}</small></strong><div><strong>${escapeAdminHtml(row.student_name)}</strong><small>${escapeAdminHtml(studentMeta(row))}｜${escapeAdminHtml(row.purpose)}</small></div><span class="status status--${escapeAdminHtml(row.status)}">${escapeAdminHtml(adminStatusLabels[row.status] || row.status)}</span></div>`).join('')}</div>` : adminEmpty('今天沒有服務預約', '目前沒有需要處理的今日紀錄。');
+  }
+
+  function renderSlotPreview() {
+    const rows = adminState.data.upcoming_slots.slice(0, 5);
+    document.getElementById('slotPreview').innerHTML = rows.length ? `<div class="mini-list">${rows.map(row => `<div class="mini-row"><strong>${escapeAdminHtml(shortDate(row.service_date))}<small>${escapeAdminHtml(row.start_time)}</small></strong><div><strong>${escapeAdminHtml(row.slot_label)}・${escapeAdminHtml(row.unit_name)}</strong><small>${row.booked_count}/${row.capacity} 人｜${row.is_open ? '開放中' : '已暫停'}</small></div></div>`).join('')}</div>` : adminEmpty('尚無未來時段', '請先在試算表產生服務時段。');
+  }
+
+  function renderAttendance() {
+    const container = document.getElementById('attendanceList');
+    const rows = adminState.data.today;
+    if (!rows.length) { container.innerHTML = adminEmpty('今天沒有服務預約', '不需要進行點名。'); return; }
+    container.innerHTML = rows.map(row => `<article class="attendance-card" data-booking-id="${escapeAdminHtml(row.booking_id)}"><div class="date-block">${escapeAdminHtml(row.start_time)}<small>${escapeAdminHtml(row.slot_label)}｜${escapeAdminHtml(row.unit_name)}</small></div><div class="person"><strong>${escapeAdminHtml(row.student_name)}</strong><span>${escapeAdminHtml(studentMeta(row))}</span><small>${escapeAdminHtml(row.purpose)}｜${escapeAdminHtml(row.student_email)}</small></div><div class="actions"><button class="button button--quiet" type="button" data-mail-booking>寄 EMAIL</button>${row.status === 'BOOKED' ? `<input class="hours" type="number" min="0.5" max="24" step="0.5" value="${row.service_hours || 1}" aria-label="服務時數"><button class="button button--primary" type="button" data-attendance="COMPLETED">完成</button><button class="button button--danger" type="button" data-attendance="NO_SHOW">爽約</button>` : `<span class="status status--${escapeAdminHtml(row.status)}">${escapeAdminHtml(adminStatusLabels[row.status] || row.status)}</span>${row.service_hours !== '' ? `<small>${row.service_hours} 小時</small>` : ''}`}</div></article>`).join('');
+    container.querySelectorAll('[data-attendance]').forEach(button => button.addEventListener('click', event => updateAttendance(event.currentTarget)));
+    container.querySelectorAll('[data-mail-booking]').forEach(button => button.addEventListener('click', () => prepareBookingMail(button.closest('[data-booking-id]').dataset.bookingId)));
+  }
+
+  function updateAttendance(button) {
+    const card = button.closest('[data-booking-id]');
+    const status = button.dataset.attendance;
+    const hours = status === 'COMPLETED' ? card.querySelector('.hours').value : '';
+    const label = status === 'COMPLETED' ? '標記完成' : '標記爽約';
+    if (!confirm(`確定要${label}？`)) return;
+    setAdminBusy(true, '正在更新點名…');
+    google.script.run.withSuccessHandler(data => { adminState.data = data; renderAdminAll(); setAdminBusy(false); showAdminToast('點名狀態已更新。'); }).withFailureHandler(handleAdminFailure).ADMIN_markAttendance(card.dataset.bookingId, status, hours);
+  }
+
+  function searchAdminBookings(event) {
+    if (event) event.preventDefault();
+    setAdminBusy(true, '正在查詢預約…');
+    const filters = { query: document.getElementById('bookingQuery').value, status: document.getElementById('bookingStatus').value, date_from: document.getElementById('bookingFrom').value, date_to: document.getElementById('bookingTo').value, limit: 200 };
+    google.script.run.withSuccessHandler(result => { renderBookingTable(result.rows, result.total); setAdminBusy(false); }).withFailureHandler(handleAdminFailure).ADMIN_searchBookings(filters);
+  }
+
+  function renderBookingTable(rows, total) {
+    document.getElementById('bookingResultMeta').textContent = `顯示 ${rows.length} 筆，共符合 ${total} 筆`;
+    const container = document.getElementById('bookingList');
+    if (!rows.length) { container.innerHTML = adminEmpty('查無預約紀錄', '請調整篩選條件後再試。'); return; }
+    container.innerHTML = `<table class="data-table"><thead><tr><th>日期／時段</th><th>學生</th><th>服務單位</th><th>目的</th><th>狀態</th><th>時數</th><th>操作</th></tr></thead><tbody>${rows.map(row => `<tr><td><strong>${escapeAdminHtml(row.service_date)}</strong><br><small>${escapeAdminHtml(row.start_time)} ${escapeAdminHtml(row.slot_label)}</small></td><td><strong>${escapeAdminHtml(row.student_name)}</strong><br><small>${escapeAdminHtml(studentMeta(row))}</small></td><td>${escapeAdminHtml(row.unit_name)}</td><td>${escapeAdminHtml(row.purpose)}</td><td><span class="status status--${escapeAdminHtml(row.status)}">${escapeAdminHtml(adminStatusLabels[row.status] || row.status)}</span></td><td>${row.service_hours === '' ? '—' : row.service_hours}</td><td>${row.status === 'BOOKED' ? `<button class="button button--danger" type="button" data-cancel-id="${escapeAdminHtml(row.booking_id)}">取消</button>` : '—'}</td></tr>`).join('')}</tbody></table>`;
+    container.querySelectorAll('[data-cancel-id]').forEach(button => button.addEventListener('click', () => cancelAdminBooking(button.dataset.cancelId)));
+  }
+
+  function cancelAdminBooking(id) {
+    const reason = prompt('請輸入取消原因（可留空）：', '管理員代為取消');
+    if (reason === null) return;
+    if (!confirm('確定取消這筆預約？取消後會立即釋出名額。')) return;
+    setAdminBusy(true, '正在取消預約…');
+    google.script.run.withSuccessHandler(data => { adminState.data = data; renderAdminAll(); setAdminBusy(false); showAdminToast('預約已取消。'); }).withFailureHandler(handleAdminFailure).ADMIN_cancelBooking(id, reason);
+  }
+
+  function renderSlots() {
+    const container = document.getElementById('slotList');
+    const rows = adminState.data.upcoming_slots;
+    if (!rows.length) { container.innerHTML = adminEmpty('尚無未來服務時段', '請先使用既有初始化功能產生時段。'); return; }
+    container.innerHTML = rows.map(row => `<article class="slot-card" data-slot-id="${escapeAdminHtml(row.slot_id)}"><div class="date-block">${escapeAdminHtml(row.service_date)}<small>${escapeAdminHtml(row.start_time)}｜${escapeAdminHtml(row.slot_label)}</small></div><div class="person"><strong>${escapeAdminHtml(row.unit_name)}</strong><span>已預約 ${row.booked_count} 人・剩餘 ${row.remaining} 人</span><small>${row.is_open ? '目前開放預約' : '目前暫停預約'}</small></div><div class="slot-editor"><label class="field"><span>名額</span><input class="hours slot-capacity" type="number" min="1" max="200" step="1" value="${row.capacity}"></label><label class="switch"><input class="slot-open" type="checkbox" ${row.is_open ? 'checked' : ''}>開放</label><button class="button button--dark" type="button" data-save-slot>儲存</button></div></article>`).join('');
+    container.querySelectorAll('[data-save-slot]').forEach(button => button.addEventListener('click', () => saveAdminSlot(button.closest('[data-slot-id]'))));
+  }
+
+  function saveAdminSlot(card) {
+    setAdminBusy(true, '正在更新服務時段…');
+    const payload = { capacity: Number(card.querySelector('.slot-capacity').value), is_open: card.querySelector('.slot-open').checked };
+    google.script.run.withSuccessHandler(data => { adminState.data = data; renderAdminAll(); setAdminBusy(false); showAdminToast('服務時段已更新。'); }).withFailureHandler(handleAdminFailure).ADMIN_updateSlot(card.dataset.slotId, payload);
+  }
+
+  function openAdminCreateDialog() {
+    populateCreateOptions();
+    document.getElementById('studentQuery').value = '';
+    document.getElementById('studentSelect').innerHTML = '<option value="">載入學生中…</option>';
+    document.getElementById('createBookingDialog').showModal();
+    searchAdminStudents();
+  }
+
+  function searchAdminStudents() {
+    const button = document.getElementById('searchStudentButton');
+    button.disabled = true; button.textContent = '搜尋中…';
+    google.script.run.withSuccessHandler(students => { const select = document.getElementById('studentSelect'); select.innerHTML = students.length ? students.map(student => `<option value="${escapeAdminHtml(student.email)}">${escapeAdminHtml(student.class_name)}班 ${escapeAdminHtml(student.seat_no)}號｜${escapeAdminHtml(student.student_name)}｜${escapeAdminHtml(student.student_id)}</option>`).join('') : '<option value="">查無學生</option>'; button.disabled = false; button.textContent = '搜尋'; }).withFailureHandler(error => { button.disabled = false; button.textContent = '搜尋'; showAdminToast(error.message || String(error), true); }).ADMIN_searchStudents(document.getElementById('studentQuery').value);
+  }
+
+  function populateCreateOptions() {
+    if (!adminState.data) return;
+    const slots = adminState.data.upcoming_slots.filter(slot => slot.is_open);
+    document.getElementById('createSlotSelect').innerHTML = slots.length ? slots.map(slot => `<option value="${escapeAdminHtml(slot.slot_id)}">${escapeAdminHtml(slot.service_date)} ${escapeAdminHtml(slot.start_time)}｜${escapeAdminHtml(slot.unit_name)}｜剩 ${slot.remaining}</option>`).join('') : '<option value="">目前沒有開放時段</option>';
+    document.getElementById('createPurposeSelect').innerHTML = adminState.data.purposes.map(purpose => `<option value="${escapeAdminHtml(purpose)}">${escapeAdminHtml(purpose)}</option>`).join('');
+  }
+
+  function createAdminBooking(event) {
+    event.preventDefault();
+    const payload = { student_email: document.getElementById('studentSelect').value, slot_id: document.getElementById('createSlotSelect').value, purpose: document.getElementById('createPurposeSelect').value };
+    if (!payload.student_email || !payload.slot_id) { showAdminToast('請先選擇學生與服務時段。', true); return; }
+    setAdminBusy(true, '正在建立預約…');
+    google.script.run.withSuccessHandler(response => { adminState.data = response.home; document.getElementById('createBookingDialog').close(); renderAdminAll(); setAdminBusy(false); showAdminToast('已成功代為建立預約。'); }).withFailureHandler(handleAdminFailure).ADMIN_createBooking(payload);
+  }
+
+  function switchAdminView(view) {
+    if (['blood', 'education', 'history', 'mail'].includes(view) && adminState.data.identity.role !== 'SUPER_ADMIN') {
+      showAdminToast('此功能僅限 SUPER_ADMIN。', true);
+      return;
+    }
+    adminState.currentView = view;
+    document.querySelectorAll('.nav__item').forEach(button => button.classList.toggle('is-active', button.dataset.view === view));
+    document.querySelectorAll('.view').forEach(section => { section.hidden = section.id !== `${view}View`; });
+    if (view === 'blood') loadAdminModule('blood');
+    if (view === 'education') loadAdminModule('education');
+    if (view === 'history' && !adminState.historyLoaded) { adminState.historyLoaded = true; searchHistoryStudents(); }
+    if (view === 'mail') loadMailCenter();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function loadAdminModule(module, force) {
+    if (!force && adminState[module]) return;
+    setAdminBusy(true, module === 'blood' ? '正在整理捐血活動…' : '正在讀取前後測設定…');
+    const runner = google.script.run.withSuccessHandler(data => {
+      adminState[module] = data;
+      if (module === 'blood') renderBloodAdmin();
+      if (module === 'education') renderEducationAdmin();
+      setAdminBusy(false);
+    }).withFailureHandler(handleAdminFailure);
+    if (module === 'blood') runner.ADMIN_getBloodAdminData();
+    if (module === 'education') runner.ADMIN_getEducationAdminData();
+  }
+
+  function renderBloodAdmin() {
+    const data = adminState.blood;
+    document.getElementById('bloodReadiness').innerHTML = `<strong>名冊已就緒：</strong>學生 ${data.students_ready} 人、教職員 ${data.staff_ready} 人。出生日期於活動後預設保留 ${data.retention_days} 天。`;
+    const container = document.getElementById('bloodEventList');
+    if (!data.events.length) { container.innerHTML = adminEmpty('尚無捐血活動', '請先使用上方表單建立活動。'); return; }
+    container.innerHTML = data.events.map(row => `<article class="module-card"><div><p class="eyebrow">${escapeAdminHtml(row.event_date)}</p><h3>${escapeAdminHtml(row.event_name)}</h3><p>${escapeAdminHtml(row.start_time)}–${escapeAdminHtml(row.end_time)}｜${escapeAdminHtml(row.location || '地點未填')}</p><small>截止：${escapeAdminHtml(row.registration_deadline)}｜有效報名 ${row.counts.active}｜完成捐血 ${row.counts.completed}</small></div><div class="module-actions"><label class="switch"><input type="checkbox" data-blood-open="${escapeAdminHtml(row.event_id)}" ${row.configured_open ? 'checked' : ''}>開放報名</label><span class="status ${row.accepting_registration ? 'status--COMPLETED' : 'status--CANCELLED'}">${row.accepting_registration ? '接受報名中' : '目前關閉'}</span><button class="button button--dark" type="button" data-print-blood="${escapeAdminHtml(row.event_id)}">列印點名／公假表</button></div></article>`).join('');
+    container.querySelectorAll('[data-blood-open]').forEach(input => input.addEventListener('change', () => toggleBloodEvent(input)));
+    container.querySelectorAll('[data-print-blood]').forEach(button => button.addEventListener('click', () => printBloodRoster(button.dataset.printBlood)));
+  }
+
+  function createBloodEvent(event) {
+    event.preventDefault();
+    const payload = {
+      event_name: document.getElementById('bloodEventName').value,
+      event_date: document.getElementById('bloodEventDate').value,
+      start_time: document.getElementById('bloodStartTime').value,
+      end_time: document.getElementById('bloodEndTime').value,
+      location: document.getElementById('bloodLocation').value,
+      is_open: document.getElementById('bloodOpenImmediately').checked
+    };
+    setAdminBusy(true, '正在建立捐血活動…');
+    google.script.run.withSuccessHandler(data => { adminState.blood = data; document.getElementById('createBloodEventForm').reset(); renderBloodAdmin(); setAdminBusy(false); showAdminToast('捐血活動已建立。'); }).withFailureHandler(handleAdminFailure).ADMIN_createBloodEvent(payload);
+  }
+
+  function toggleBloodEvent(input) {
+    const next = input.checked;
+    if (!confirm(`確定要${next ? '開放' : '關閉'}這場捐血活動的報名？`)) { input.checked = !next; return; }
+    setAdminBusy(true, '正在更新報名狀態…');
+    google.script.run.withSuccessHandler(data => { adminState.blood = data; renderBloodAdmin(); setAdminBusy(false); showAdminToast(`捐血報名已${next ? '開放' : '關閉'}。`); }).withFailureHandler(error => { input.checked = !next; handleAdminFailure(error); }).ADMIN_setBloodEventOpen(input.dataset.bloodOpen, next);
+  }
+
+  function cleanupExpiredBloodData() {
+    if (!confirm('確定清除已超過保存期限的出生日期資料？這項操作無法復原。')) return;
+    setAdminBusy(true, '正在清除到期資料…');
+    google.script.run.withSuccessHandler(result => { setAdminBusy(false); showAdminToast(`已清除 ${result.deleted} 筆到期生日資料。`); }).withFailureHandler(handleAdminFailure).BLOOD_deleteExpiredSensitiveData();
+  }
+
+  function printBloodRoster(eventId) {
+    const printWindow = openPrintWindow('正在準備捐血點名／公假核對表…');
+    if (!printWindow) return;
+    setAdminBusy(true, '正在產生捐血點名／公假核對表…');
+    google.script.run.withSuccessHandler(report => {
+      setAdminBusy(false);
+      const rows = report.rows.map(row => {
+        const existingStatus = row.status === 'REGISTERED' ? '' : escapeAdminHtml(row.status_label);
+        return `<tr><td>${row.sequence}</td><td>${escapeAdminHtml(row.appointment_time)}</td><td>${escapeAdminHtml(row.class_name)}</td><td>${escapeAdminHtml(row.seat_no)}</td><td>${escapeAdminHtml(row.participant_id)}</td><td class="student-name">${escapeAdminHtml(row.participant_name)}</td><td class="check-cell">□</td><td class="check-cell">□</td><td class="check-cell">□</td><td class="note-cell">${existingStatus}</td></tr>`;
+      }).join('');
+      const slotSummary = report.summary.by_slot.map(item => `${escapeAdminHtml(item.slot)}：${item.count} 人`).join('　');
+      const body = `<section class="blood-report"><div class="document-heading"><p class="school-name">${escapeAdminHtml(report.school_name)}</p><h1>${escapeAdminHtml(report.event.event_name)}｜學生點名暨公假核對表</h1><p>${escapeAdminHtml(report.event.event_date)}　${escapeAdminHtml(report.event.time)}　${escapeAdminHtml(report.event.location)}</p></div><div class="report-summary"><strong>學生共 ${report.summary.student_count} 人</strong><span>${slotSummary || '尚無分時段資料'}</span></div><table class="blood-table"><thead><tr><th>#</th><th>報到時段</th><th>班級</th><th>座號</th><th>學號</th><th>姓名</th><th>公假</th><th>到場</th><th>未到</th><th>缺曠核對／備註</th></tr></thead><tbody>${rows || '<tr><td colspan="10">目前沒有學生有效報名資料</td></tr>'}</tbody></table><div class="document-footer"><span>用途：公假申請、活動點名及缺曠核對｜本表不含出生日期</span><span>資料準備紀錄：${escapeAdminHtml(report.audit_id)}</span></div></section>`;
+      writePrintWindow(printWindow, `${report.event.event_name}｜學生點名暨公假核對表`, body, report.generated_at, { pageSize: 'A4 landscape', bodyClass: 'print-blood' });
+    }).withFailureHandler(error => { setAdminBusy(false); if (printWindow) printWindow.close(); showAdminToast(error.message || String(error), true); }).ADMIN_getBloodRosterForPrint(eventId);
+  }
+
+  function renderEducationAdmin() {
+    const container = document.getElementById('educationCampaignList');
+    const rows = adminState.education.campaigns;
+    if (!rows.length) { container.innerHTML = adminEmpty('尚無教育活動', '請先建立教育活動並填入前後測 Google 表單網址。'); return; }
+    container.innerHTML = rows.map(educationCampaignCardHtml).join('');
+    container.querySelectorAll('[data-edu-campaign]').forEach(input => input.addEventListener('change', () => toggleEducationCampaign(input)));
+    container.querySelectorAll('[data-edu-form]').forEach(input => input.addEventListener('change', () => toggleEducationForm(input)));
+    container.querySelectorAll('[data-save-edu-links]').forEach(button => button.addEventListener('click', () => saveEducationLinks(button.closest('[data-edu-id]'))));
+  }
+
+  function educationCampaignCardHtml(row) {
+    const campaignId = escapeAdminHtml(row.campaign_id);
+    const periodStatus = row.in_date_range ? '目前在活動期間內' : '目前不在活動期間';
+    const campaignChecked = row.is_active ? ' checked' : '';
+    const pretestChecked = row.pretest_open ? ' checked' : '';
+    const posttestChecked = row.posttest_open ? ' checked' : '';
+    const pretestDisabled = row.pretest_url ? '' : ' disabled';
+    const posttestDisabled = row.posttest_url ? '' : ' disabled';
+
+    return [
+      '<article class="module-card edu-card" data-edu-id="', campaignId, '">',
+        '<div>',
+          '<p class="eyebrow">', escapeAdminHtml(row.start_date), '–', escapeAdminHtml(row.end_date), '</p>',
+          '<h3>', escapeAdminHtml(row.campaign_name), '</h3>',
+          '<small>', periodStatus, '</small>',
+          '<div class="edu-links">',
+            '<label class="field"><span>前測表單連結</span>',
+              '<input data-edu-pre-url type="url" value="', escapeAdminHtml(row.pretest_url), '" placeholder="https://...">',
+            '</label>',
+            '<label class="field"><span>後測表單連結</span>',
+              '<input data-edu-post-url type="url" value="', escapeAdminHtml(row.posttest_url), '" placeholder="https://...">',
+            '</label>',
+            '<button class="button button--quiet" type="button" data-save-edu-links>儲存連結</button>',
+          '</div>',
+        '</div>',
+        '<div class="module-actions">',
+          '<label class="switch"><input type="checkbox" data-edu-campaign="', campaignId, '"', campaignChecked, '>活動啟用</label>',
+          '<label class="switch"><input type="checkbox" data-edu-form="PRETEST" data-campaign-id="', campaignId, '"', pretestChecked, pretestDisabled, '>前測開放</label>',
+          '<label class="switch"><input type="checkbox" data-edu-form="POSTTEST" data-campaign-id="', campaignId, '"', posttestChecked, posttestDisabled, '>後測開放</label>',
+        '</div>',
+      '</article>'
+    ].join('');
+  }
+
+  function createEducationCampaign(event) {
+    event.preventDefault();
+    const payload = { campaign_name: document.getElementById('educationCampaignName').value, start_date: document.getElementById('educationStartDate').value, end_date: document.getElementById('educationEndDate').value, pretest_url: document.getElementById('educationPretestUrl').value, posttest_url: document.getElementById('educationPosttestUrl').value };
+    setAdminBusy(true, '正在建立教育活動…');
+    google.script.run.withSuccessHandler(data => { adminState.education = data; document.getElementById('createEducationCampaignForm').reset(); renderEducationAdmin(); setAdminBusy(false); showAdminToast('教育活動已建立；前後測入口預設關閉。'); }).withFailureHandler(handleAdminFailure).ADMIN_createEducationCampaign(payload);
+  }
+
+  function saveEducationLinks(card) {
+    const payload = { pretest_url: card.querySelector('[data-edu-pre-url]').value, posttest_url: card.querySelector('[data-edu-post-url]').value };
+    setAdminBusy(true, '正在儲存前後測連結…');
+    google.script.run.withSuccessHandler(data => { adminState.education = data; renderEducationAdmin(); setAdminBusy(false); showAdminToast('前後測表單連結已儲存。'); }).withFailureHandler(handleAdminFailure).ADMIN_updateEducationCampaignLinks(card.dataset.eduId, payload);
+  }
+
+  function toggleEducationCampaign(input) {
+    const next = input.checked;
+    if (!confirm(`確定要${next ? '啟用' : '停用'}這個教育活動網站入口？`)) { input.checked = !next; return; }
+    setAdminBusy(true, '正在更新教育活動…');
+    google.script.run.withSuccessHandler(data => { adminState.education = data; renderEducationAdmin(); setAdminBusy(false); showAdminToast(`教育活動已${next ? '啟用' : '停用'}。`); }).withFailureHandler(error => { input.checked = !next; handleAdminFailure(error); }).ADMIN_setEducationCampaignActive(input.dataset.eduCampaign, next);
+  }
+
+  function toggleEducationForm(input) {
+    const next = input.checked;
+    const label = input.dataset.eduForm === 'PRETEST' ? '前測' : '後測';
+    if (!confirm(`確定要${next ? '開放' : '關閉'}網站上的${label}表單入口？`)) { input.checked = !next; return; }
+    setAdminBusy(true, `正在${next ? '開放' : '關閉'}${label}表單…`);
+    google.script.run.withSuccessHandler(data => { adminState.education = data; renderEducationAdmin(); setAdminBusy(false); showAdminToast(`${label}表單已${next ? '開放' : '關閉'}。`); }).withFailureHandler(error => { input.checked = !next; handleAdminFailure(error); }).ADMIN_setEducationFormOpen(input.dataset.campaignId, input.dataset.eduForm, next);
+  }
+
+  function searchHistoryStudents() {
+    const button = document.getElementById('historySearchButton');
+    button.disabled = true; button.textContent = '搜尋中…';
+    const filters = { query: document.getElementById('historyStudentQuery').value, grade: document.getElementById('historyGrade').value, class_name: document.getElementById('historyClass').value };
+    google.script.run.withSuccessHandler(result => {
+      const gradeSelect = document.getElementById('historyGrade');
+      const classSelect = document.getElementById('historyClass');
+      if (gradeSelect.options.length <= 1) gradeSelect.innerHTML = '<option value="">全部年級</option>' + result.grades.map(value => `<option value="${escapeAdminHtml(value)}">${escapeAdminHtml(value)}年級</option>`).join('');
+      if (classSelect.options.length <= 1) classSelect.innerHTML = '<option value="">全部班級</option>' + result.classes.map(value => `<option value="${escapeAdminHtml(value)}">${escapeAdminHtml(value)}班</option>`).join('');
+      const list = document.getElementById('historyStudentList');
+      list.innerHTML = result.rows.length ? result.rows.map(student => `<label class="student-check"><input type="checkbox" data-history-student value="${escapeAdminHtml(student.email)}"><span><strong>${escapeAdminHtml(student.student_name)}</strong><small>${escapeAdminHtml(student.grade ? `${student.grade}年級・` : '')}${escapeAdminHtml(student.class_name)}班 ${escapeAdminHtml(student.seat_no)}號・${escapeAdminHtml(student.student_id)}</small></span></label>`).join('') : adminEmpty('查無學生', '請調整年級、班級或關鍵字。');
+      list.querySelectorAll('[data-history-student]').forEach(input => input.addEventListener('change', updateHistorySelectionMeta));
+      document.getElementById('historySelectAll').checked = false;
+      document.getElementById('historyResultMeta').textContent = `顯示 ${result.rows.length} 人，共符合 ${result.total} 人`;
+      button.disabled = false; button.textContent = '搜尋';
+    }).withFailureHandler(error => { button.disabled = false; button.textContent = '套用篩選'; showAdminToast(error.message || String(error), true); }).ADMIN_searchHistoryStudents(filters);
+  }
+
+  function updateHistorySelectionMeta() {
+    const selected = document.querySelectorAll('[data-history-student]:checked').length;
+    const visible = document.querySelectorAll('[data-history-student]').length;
+    document.getElementById('historyResultMeta').textContent = `已勾選 ${selected} 人｜目前顯示 ${visible} 人`;
+  }
+
+  function populateHistoryUnits() {
+    if (!adminState.data) return;
+    const select = document.getElementById('historyUnit');
+    select.innerHTML = adminState.data.units.filter(row => row.is_active).map(row => `<option value="${escapeAdminHtml(row.unit_id)}">${escapeAdminHtml(row.unit_name)}</option>`).join('');
+  }
+
+  function createManualHistory(event) {
+    event.preventDefault();
+    const selected = Array.from(document.querySelectorAll('[data-history-student]:checked'));
+    if (selected.length !== 1) { showAdminToast('新增單筆紀錄時，請只勾選一位學生。', true); return; }
+    const payload = {
+      student_email: selected[0].value,
+      service_date: document.getElementById('historyServiceDate').value,
+      unit_id: document.getElementById('historyUnit').value,
+      service_content: document.getElementById('historyContent').value,
+      service_hours: document.getElementById('historyHours').value,
+      certification_unit: document.getElementById('historyCertificationUnit').value,
+      notes: document.getElementById('historyNotes').value
+    };
+    setAdminBusy(true, '正在新增志工服務紀錄…');
+    google.script.run.withSuccessHandler(() => { document.getElementById('manualHistoryForm').reset(); populateHistoryUnits(); setAdminBusy(false); showAdminToast('志工服務紀錄已新增。'); }).withFailureHandler(handleAdminFailure).ADMIN_createServiceHistory(payload);
+  }
+
+  function backfillServiceHistory() {
+    if (!confirm('確定同步所有已完成的預約至學生服務歷程？既有紀錄不會重複建立。')) return;
+    setAdminBusy(true, '正在同步學生服務歷程…');
+    google.script.run.withSuccessHandler(result => { setAdminBusy(false); showAdminToast(`同步完成：共檢查 ${result.completed_count} 筆，新增 ${result.added_count} 筆。`); }).withFailureHandler(handleAdminFailure).ADMIN_backfillServiceHistory();
+  }
+
+  function printStudentHistory() {
+    const emails = Array.from(document.querySelectorAll('[data-history-student]:checked')).map(input => input.value);
+    if (!emails.length) { showAdminToast('請至少勾選一位學生。', true); return; }
+    const template = document.getElementById('historyPrintTemplate').value;
+    const templateLabel = historyTemplateLabel(template);
+    const printWindow = openPrintWindow('正在準備學生志工履歷…');
+    if (!printWindow) return;
+    setAdminBusy(true, `正在產生 ${emails.length} 位學生的${templateLabel}…`);
+    google.script.run.withSuccessHandler(batch => {
+      setAdminBusy(false);
+      const pages = batch.reports.map(report => buildStudentHistoryPage(report, batch)).join('');
+      writePrintWindow(printWindow, `${batch.school_name}｜學生志工服務履歷`, pages, batch.generated_at, {
+        pageSize: 'A4 portrait',
+        bodyClass: `history-print history-${batch.template.toLowerCase().replaceAll('_', '-')}`,
+        extraCss: historyTemplateCss(batch.template)
+      });
+    }).withFailureHandler(error => { setAdminBusy(false); if (printWindow) printWindow.close(); showAdminToast(error.message || String(error), true); }).ADMIN_getStudentHistoriesForPrint(emails, template);
+  }
+
+  function historyTemplateLabel(template) {
+    return ({ YLSH_BLUE_GOLD:'宜中藍金版', FORMAL_CERTIFICATE:'正式認證版', CLEAN_TABLE:'乾淨純表格版' })[template] || '志工履歷';
+  }
+
+  function buildStudentHistoryPage(report, batch) {
+    const rows = report.rows.map((row, index) => `<tr><td>${index + 1}</td><td>${escapeAdminHtml(row.service_date)}</td><td>${escapeAdminHtml(row.service_unit)}<small>認證：${escapeAdminHtml(row.certification_unit || row.service_unit)}</small></td><td>${escapeAdminHtml(row.service_content)}</td><td class="hours-cell">${escapeAdminHtml(row.service_hours)}</td><td>${escapeAdminHtml(row.record_status === 'VERIFIED' ? '志工' : row.record_status)}</td><td>${escapeAdminHtml(row.notes || '—')}</td></tr>`).join('');
+    const studentHeading = `${report.student.grade ? `${report.student.grade}年級　` : ''}${report.student.class_name}班 ${report.student.seat_no}號　${report.student.student_name}`;
+    const watermark = batch.template === 'YLSH_BLUE_GOLD' ? historyBlueGoldWatermark() : '';
+    return `<section class="report-page">${watermark}<div class="report-content"><header class="history-header"><p class="school-name">${escapeAdminHtml(batch.school_name)}</p><h1>學生志工服務履歷</h1><p class="document-subtitle">VOLUNTEER SERVICE RECORD</p></header><div class="student-meta"><strong>${escapeAdminHtml(studentHeading)}</strong><span>學號：${escapeAdminHtml(report.student.student_id)}</span></div><div class="history-summary"><span>服務紀錄 <b>${report.summary.record_count}</b> 筆</span><span>累計時數 <b>${escapeAdminHtml(report.summary.total_hours)}</b> 小時</span></div><table class="history-table"><thead><tr><th>#</th><th>日期</th><th>服務／認證單位</th><th>項目（工作內容）</th><th>時數</th><th>狀態</th><th>備註</th></tr></thead><tbody>${rows || '<tr><td colspan="7">目前沒有已完成的志工服務紀錄</td></tr>'}</tbody><tfoot><tr><td colspan="4">合計</td><td>${escapeAdminHtml(report.summary.total_hours)}</td><td colspan="2">小時</td></tr></tfoot></table><div class="signatures"><span>承辦人核章：<i></i></span><span>主任核章：<i></i></span></div><footer class="history-footer"><span>${escapeAdminHtml(historyTemplateLabel(batch.template))}</span><span>產生：${escapeAdminHtml(batch.generated_at)}｜Audit：${escapeAdminHtml(batch.audit_id)}</span></footer></div></section>`;
+  }
+
+  function historyBlueGoldWatermark() {
+    return '<div class="history-watermark" aria-hidden="true"><svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg"><circle cx="160" cy="160" r="126" fill="none" stroke="currentColor" stroke-width="8"/><path d="M58 196L116 118l35 42 35-58 76 94" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><path d="M75 218h170" stroke="currentColor" stroke-width="9" stroke-linecap="round"/><text x="160" y="270" text-anchor="middle" font-size="34" font-weight="800" font-family="Arial,sans-serif">YLSH</text></svg></div>';
+  }
+
+  function historyTemplateCss(template) {
+    const shared = '.history-print .report-page{min-height:270mm;position:relative;overflow:hidden}.history-print .report-content{position:relative;z-index:1}.history-header{text-align:center}.history-header h1{margin:3px 0 0;font-size:25px;letter-spacing:.12em}.document-subtitle{margin:4px 0 14px;font-size:9px;letter-spacing:.25em}.school-name{margin:0;font-size:16px;font-weight:800}.history-summary{display:flex;gap:10px;margin:0 0 10px}.history-summary span{padding:6px 10px;border-radius:999px;font-size:10px}.history-summary b{font-size:13px}.history-table{font-size:9.5px}.history-table td small{display:block;margin-top:3px;color:#5f6c75;font-size:8.5px}.history-table th:nth-child(1){width:6%}.history-table th:nth-child(2){width:13%}.history-table th:nth-child(3){width:19%}.history-table th:nth-child(4){width:25%}.history-table th:nth-child(5){width:8%}.history-table th:nth-child(6){width:9%}.history-table th:nth-child(7){width:20%}.hours-cell{text-align:center}.history-footer{display:flex;justify-content:space-between;gap:15px;margin-top:12px;padding-top:7px;border-top:1px solid currentColor;font-size:8px}.history-watermark{position:absolute;z-index:0;inset:46mm 20mm auto auto;width:112mm;height:112mm;color:#173f5f;opacity:.045}.signatures i{display:inline-block;width:38mm;height:12mm;border-bottom:1px solid currentColor;vertical-align:bottom}';
+    if (template === 'FORMAL_CERTIFICATE') return shared + '.history-formal-certificate .report-page{padding:8mm;border:4px double #1f2933;font-family:"Noto Serif TC","PMingLiU",serif}.history-formal-certificate .document-subtitle{color:#444}.history-formal-certificate .history-summary span{border:1px solid #555;background:#fff}.history-formal-certificate th{background:#ececec;color:#111}.history-formal-certificate tfoot td{border-top:2px solid #222}.history-formal-certificate .signatures{margin-top:18mm}';
+    if (template === 'CLEAN_TABLE') return shared + '.history-clean-table .report-page{padding:3mm}.history-clean-table .history-header{text-align:left;border-bottom:2px solid #222;padding-bottom:7px}.history-clean-table .history-header h1{font-size:21px;letter-spacing:.04em}.history-clean-table .document-subtitle{display:none}.history-clean-table .student-meta{margin:10px 0}.history-clean-table .history-summary span{padding:0;background:none}.history-clean-table th{background:#fff;color:#111;border-top:2px solid #222;border-bottom:2px solid #222}.history-clean-table th,.history-clean-table td{border-left:0;border-right:0}.history-clean-table .signatures{margin-top:14mm}';
+    return shared + '.history-ylsh-blue-gold .report-page{padding:8mm;border:1.5px solid #173f5f;box-shadow:inset 0 0 0 3px #e6b84b}.history-ylsh-blue-gold .history-header{margin:-8mm -8mm 8mm;padding:8mm 8mm 6mm;background:linear-gradient(120deg,#102f4b,#1d5a7a);color:#fff;border-bottom:4px solid #e6b84b}.history-ylsh-blue-gold .document-subtitle{color:#f2d98f}.history-ylsh-blue-gold .history-summary span{background:#eef4f7;color:#173f5f}.history-ylsh-blue-gold th{background:#173f5f;color:#fff}.history-ylsh-blue-gold tfoot td{background:#fff6d9}.history-ylsh-blue-gold .signatures{color:#173f5f;margin-top:16mm}';
+  }
+
+  function prepareBookingMail(bookingId, templateKey = 'BOOKING_TODAY') {
+    setAdminBusy(true, '正在準備學生服務通知…');
+    google.script.run.withSuccessHandler(draft => {
+      adminState.bookingMail = {
+        bookingId,
+        requestId: adminRequestId('BOOKING'),
+        draft
+      };
+      renderBookingMailDraft(draft, true);
+      setAdminBusy(false);
+      document.getElementById('bookingMailDialog').showModal();
+    }).withFailureHandler(handleAdminFailure).MAIL_prepareBookingEmail(bookingId, templateKey);
+  }
+
+  function renderBookingMailDraft(draft, rebuildTemplates) {
+    const recipient = draft.recipient;
+    document.getElementById('bookingMailRecipient').innerHTML = `<strong>${escapeAdminHtml(recipient.name)}</strong><span>${escapeAdminHtml(recipient.meta)}</span><small>${escapeAdminHtml(recipient.email)}</small>`;
+    const templateSelect = document.getElementById('bookingMailTemplate');
+    if (rebuildTemplates) {
+      templateSelect.innerHTML = draft.available_templates.map(item => `<option value="${escapeAdminHtml(item.template_key)}">${escapeAdminHtml(item.template_name)}</option>`).join('');
+    }
+    templateSelect.value = draft.template_key;
+    document.getElementById('bookingMailSubject').value = draft.subject;
+    document.getElementById('bookingMailBody').value = draft.body;
+    document.getElementById('bookingMailConfirm').checked = false;
+    document.getElementById('bookingMailMode').innerHTML = draft.test_mode
+      ? `<strong>測試模式：</strong>本信實際寄至 ${escapeAdminHtml(draft.actual_recipient)}，不會寄給學生。`
+      : `<strong>正式模式：</strong>本信將寄至 ${escapeAdminHtml(recipient.email)}。`;
+  }
+
+  function reloadBookingMailTemplate() {
+    if (!adminState.bookingMail) return;
+    const templateKey = document.getElementById('bookingMailTemplate').value;
+    setAdminBusy(true, '正在載入通知範本…');
+    google.script.run.withSuccessHandler(draft => {
+      adminState.bookingMail.draft = draft;
+      renderBookingMailDraft(draft, false);
+      setAdminBusy(false);
+    }).withFailureHandler(handleAdminFailure).MAIL_prepareBookingEmail(adminState.bookingMail.bookingId, templateKey);
+  }
+
+  function sendBookingMail(event) {
+    event.preventDefault();
+    if (!adminState.bookingMail) return;
+    const button = document.getElementById('bookingMailSendButton');
+    button.disabled = true;
+    setAdminBusy(true, '正在寄送學生服務通知…');
+    const payload = {
+      booking_id: adminState.bookingMail.bookingId,
+      template_key: document.getElementById('bookingMailTemplate').value,
+      subject: document.getElementById('bookingMailSubject').value,
+      body: document.getElementById('bookingMailBody').value,
+      confirmed: document.getElementById('bookingMailConfirm').checked,
+      request_id: adminState.bookingMail.requestId
+    };
+    google.script.run.withSuccessHandler(result => {
+      button.disabled = false;
+      setAdminBusy(false);
+      document.getElementById('bookingMailDialog').close();
+      adminState.bookingMail = null;
+      const note = result.test_mode ? `測試信已寄至 ${result.actual_recipient}。` : '郵件已交付 Google 寄送服務。';
+      showAdminToast(result.duplicate_suppressed ? '系統已阻止重複寄送。' : note);
+      if (adminState.mail) loadMailCenter(true);
+    }).withFailureHandler(error => {
+      button.disabled = false;
+      handleAdminFailure(error);
+    }).MAIL_sendBookingEmail(payload);
+  }
+
+  function prepareHistoryEmailBatch() {
+    const emails = Array.from(document.querySelectorAll('[data-history-student]:checked')).map(input => input.value);
+    if (!emails.length) { showAdminToast('請至少勾選一位學生。', true); return; }
+    const layout = document.getElementById('historyPrintTemplate').value;
+    setAdminBusy(true, '正在檢查寄送名單與額度…');
+    google.script.run.withSuccessHandler(info => {
+      const batchId = adminRequestId('HISTORY-BATCH');
+      adminState.historyMail = {
+        layout,
+        batchId,
+        info,
+        items: emails.map((email, index) => ({ email, requestId: `${batchId}:${index + 1}` }))
+      };
+      document.getElementById('historyMailSummary').innerHTML = `<strong>${info.recipient_count} 位學生・${escapeAdminHtml(info.layout_label)}</strong><span>每位學生各收一封，附件只含自己的志工履歷。</span><small>首位：${escapeAdminHtml(info.first_recipient.name)} ${escapeAdminHtml(info.first_recipient.email)}｜今日剩餘額度 ${info.remaining_quota}</small>`;
+      document.getElementById('historyMailSubjectPreview').value = info.preview.subject;
+      document.getElementById('historyMailBodyPreview').value = info.preview.body;
+      document.getElementById('historyMailConfirm').checked = false;
+      document.getElementById('historyMailMode').innerHTML = info.test_mode
+        ? '<strong>測試模式：</strong>每封測試信都會改寄目前操作管理員；單次最多測試 3 位。'
+        : '<strong>正式模式：</strong>系統會逐位寄送至學生校內帳號，請保持本頁開啟直到完成。';
+      setAdminBusy(false);
+      document.getElementById('historyMailDialog').showModal();
+    }).withFailureHandler(handleAdminFailure).MAIL_prepareHistoryBatch(emails, layout);
+  }
+
+  async function sendHistoryMailBatch(event) {
+    event.preventDefault();
+    if (!adminState.historyMail) return;
+    if (!document.getElementById('historyMailConfirm').checked) {
+      showAdminToast('請先確認名單、版面及寄送模式。', true);
+      return;
+    }
+    const state = adminState.historyMail;
+    const button = document.getElementById('historyMailSendButton');
+    button.disabled = true;
+    const failures = [];
+    let accepted = 0;
+    for (let index = 0; index < state.items.length; index += 1) {
+      const item = state.items[index];
+      setAdminBusy(true, `正在寄送 ${index + 1}/${state.items.length}：${item.email}`);
+      try {
+        await mailSendHistoryRpc({
+          student_email: item.email,
+          layout: state.layout,
+          template_key: 'HISTORY_PDF',
+          confirmed: true,
+          batch_id: state.batchId,
+          request_id: item.requestId
+        });
+        accepted += 1;
+      } catch (error) {
+        failures.push({ item, message: error && error.message ? error.message : String(error) });
+      }
+    }
+    setAdminBusy(false);
+    button.disabled = false;
+    if (!failures.length) {
+      document.getElementById('historyMailDialog').close();
+      adminState.historyMail = null;
+      showAdminToast(`履歷寄送完成：${accepted} 封已交付寄送服務。`);
+    } else {
+      state.items = failures.map(row => row.item);
+      document.getElementById('historyMailConfirm').checked = false;
+      document.getElementById('historyMailSummary').innerHTML = `<strong>已完成 ${accepted} 封，失敗 ${failures.length} 封</strong><span>可再次確認後重試失敗項目；系統會以原請求識別碼防止重複寄送。</span><small>${escapeAdminHtml(failures[0].message)}</small>`;
+      showAdminToast(`有 ${failures.length} 封未完成，請查看視窗後重試。`, true);
+    }
+    if (adminState.mail) loadMailCenter(true);
+  }
+
+  function initializeMailModule() {
+    if (!confirm('確定要建立／修復郵件範本、寄送紀錄與安全測試設定？既有紀錄不會被清除。')) return;
+    setAdminBusy(true, '正在初始化郵件模組…');
+    google.script.run.withSuccessHandler(data => {
+      adminState.mail = data;
+      renderMailCenter();
+      setAdminBusy(false);
+      showAdminToast('郵件模組已就緒，預設維持測試模式。');
+    }).withFailureHandler(handleAdminFailure).MAIL_initializeModule();
+  }
+
+  function loadMailCenter(force) {
+    if (!force && adminState.mail) { renderMailCenter(); return; }
+    setAdminBusy(true, '正在讀取郵件中心…');
+    google.script.run.withSuccessHandler(data => {
+      adminState.mail = data;
+      renderMailCenter();
+      setAdminBusy(false);
+    }).withFailureHandler(error => {
+      setAdminBusy(false);
+      document.getElementById('mailModeNotice').innerHTML = `<strong>郵件中心尚未就緒：</strong>${escapeAdminHtml(error && error.message ? error.message : String(error))}`;
+      showAdminToast(error && error.message ? error.message : String(error), true);
+    }).MAIL_getCenterData();
+  }
+
+  function renderMailCenter() {
+    const data = adminState.mail;
+    if (!data) return;
+    const settings = data.settings;
+    document.getElementById('mailModeNotice').innerHTML = settings.test_mode
+      ? `<strong>目前為安全測試模式。</strong>所有信件只會寄至操作管理員；確認測試內容後，再於下方關閉測試模式。剩餘額度：${data.remaining_quota}`
+      : `<strong>目前為正式寄送模式。</strong>信件會寄至清冊中的校內帳號；今日剩餘額度：${data.remaining_quota}`;
+    const cards = [
+      ['今日請求', data.summary.today_total, '今天建立的寄送紀錄', ''],
+      ['已交付', data.summary.today_accepted, 'MailApp 未回報錯誤', 'good'],
+      ['失敗', data.summary.today_failed, '可依紀錄排查', data.summary.today_failed ? 'alert' : 'good'],
+      ['待確認', data.summary.pending, '不可直接判定是否送達', data.summary.pending ? 'alert' : ''],
+      ['剩餘額度', data.remaining_quota, '以目前執行帳號為準', ''],
+      ['寄送模式', settings.test_mode ? '測試' : '正式', settings.enabled ? '總開關已啟用' : '總開關已關閉', settings.test_mode ? 'alert' : 'good']
+    ];
+    document.getElementById('mailSummaryGrid').innerHTML = cards.map(card => `<article class="summary-card" data-tone="${card[3]}"><span>${escapeAdminHtml(card[0])}</span><strong>${escapeAdminHtml(card[1])}</strong><small>${escapeAdminHtml(card[2])}</small></article>`).join('');
+    document.getElementById('mailEnabled').checked = settings.enabled;
+    document.getElementById('mailTestMode').checked = settings.test_mode;
+    document.getElementById('mailSenderName').value = settings.sender_name;
+    document.getElementById('mailReplyTo').value = settings.reply_to;
+    document.getElementById('mailGeneralTemplate').innerHTML = data.general_templates.length
+      ? data.general_templates.map(row => `<option value="${escapeAdminHtml(row.template_key)}">${escapeAdminHtml(row.template_name)}</option>`).join('')
+      : '<option value="">尚無啟用的一般通知範本</option>';
+    renderMailTemplates();
+    renderMailLogs();
+  }
+
+  function saveMailSettings(event) {
+    event.preventDefault();
+    const testMode = document.getElementById('mailTestMode').checked;
+    if (!testMode && !confirm('你正要關閉測試模式。之後信件會真正寄至學生或教職員校內帳號，確定繼續？')) return;
+    setAdminBusy(true, '正在儲存寄送設定…');
+    const payload = {
+      enabled: document.getElementById('mailEnabled').checked,
+      test_mode: testMode,
+      sender_name: document.getElementById('mailSenderName').value,
+      reply_to: document.getElementById('mailReplyTo').value
+    };
+    google.script.run.withSuccessHandler(data => {
+      adminState.mail = data;
+      renderMailCenter();
+      setAdminBusy(false);
+      showAdminToast('寄送設定已更新。');
+    }).withFailureHandler(handleAdminFailure).MAIL_updateSettings(payload);
+  }
+
+  function searchMailRecipients() {
+    const button = document.getElementById('mailRecipientSearchButton');
+    button.disabled = true; button.textContent = '搜尋中…';
+    google.script.run.withSuccessHandler(rows => {
+      const select = document.getElementById('mailRecipientSelect');
+      select.innerHTML = rows.length ? rows.map(row => `<option value="${escapeAdminHtml(row.email)}">${escapeAdminHtml(row.name)}｜${escapeAdminHtml(row.meta)}｜${escapeAdminHtml(row.email)}</option>`).join('') : '<option value="">查無清冊資料</option>';
+      button.disabled = false; button.textContent = '搜尋';
+      document.getElementById('mailGeneralSubject').value = '';
+      document.getElementById('mailGeneralBody').value = '';
+      document.getElementById('mailGeneralConfirm').checked = false;
+    }).withFailureHandler(error => { button.disabled = false; button.textContent = '搜尋'; showAdminToast(error.message || String(error), true); }).MAIL_searchRecipients(document.getElementById('mailRecipientQuery').value, document.getElementById('mailRecipientType').value);
+  }
+
+  function prepareGeneralMail() {
+    const recipient = document.getElementById('mailRecipientSelect').value;
+    const template = document.getElementById('mailGeneralTemplate').value;
+    if (!recipient || !template) { showAdminToast('請先選擇清冊收件人與範本。', true); return; }
+    setAdminBusy(true, '正在產生郵件預覽…');
+    google.script.run.withSuccessHandler(draft => {
+      adminState.generalMail = { draft, requestId: adminRequestId('GENERAL') };
+      document.getElementById('mailGeneralSubject').value = draft.subject;
+      document.getElementById('mailGeneralBody').value = draft.body;
+      document.getElementById('mailGeneralConfirm').checked = false;
+      setAdminBusy(false);
+      showAdminToast(draft.test_mode ? `測試模式：實際寄至 ${draft.actual_recipient}` : `正式收件人：${draft.recipient.email}`);
+    }).withFailureHandler(handleAdminFailure).MAIL_prepareGeneralEmail(recipient, template);
+  }
+
+  function sendGeneralMail(event) {
+    event.preventDefault();
+    const recipient = document.getElementById('mailRecipientSelect').value;
+    const template = document.getElementById('mailGeneralTemplate').value;
+    if (!adminState.generalMail || adminState.generalMail.draft.recipient.email !== recipient || adminState.generalMail.draft.template_key !== template) {
+      showAdminToast('收件人或範本已變更，請重新載入範本預覽。', true);
+      return;
+    }
+    const button = document.getElementById('mailGeneralSendButton');
+    button.disabled = true;
+    setAdminBusy(true, '正在寄送郵件…');
+    const payload = {
+      recipient_email: recipient,
+      template_key: template,
+      subject: document.getElementById('mailGeneralSubject').value,
+      body: document.getElementById('mailGeneralBody').value,
+      confirmed: document.getElementById('mailGeneralConfirm').checked,
+      request_id: adminState.generalMail.requestId
+    };
+    google.script.run.withSuccessHandler(result => {
+      button.disabled = false;
+      setAdminBusy(false);
+      document.getElementById('mailGeneralConfirm').checked = false;
+      adminState.generalMail = null;
+      showAdminToast(result.duplicate_suppressed ? '系統已阻止重複寄送。' : (result.test_mode ? `測試信已寄至 ${result.actual_recipient}。` : '郵件已交付 Google 寄送服務。'));
+      loadMailCenter(true);
+    }).withFailureHandler(error => { button.disabled = false; handleAdminFailure(error); }).MAIL_sendGeneralEmail(payload);
+  }
+
+  function renderMailTemplates() {
+    const container = document.getElementById('mailTemplateList');
+    const rows = adminState.mail.templates;
+    container.innerHTML = rows.length ? rows.map(row => `<article class="mail-template-card"><div><span class="mail-scope">${escapeAdminHtml(mailScopeLabel(row.scope))}</span><strong>${escapeAdminHtml(row.template_name)}</strong><small>${escapeAdminHtml(row.subject_template)}</small></div><div class="module-actions"><span class="status ${row.is_active ? 'status--COMPLETED' : 'status--CANCELLED'}">${row.is_active ? '啟用' : '停用'}</span><button class="button button--quiet" type="button" data-edit-mail-template="${escapeAdminHtml(row.template_key)}">編輯</button></div></article>`).join('') : adminEmpty('尚無郵件範本', '請先初始化郵件模組。');
+    container.querySelectorAll('[data-edit-mail-template]').forEach(button => button.addEventListener('click', () => openMailTemplateEditor(button.dataset.editMailTemplate)));
+  }
+
+  function openMailTemplateEditor(key) {
+    const template = adminState.mail.templates.find(row => row.template_key === key);
+    if (!template) return;
+    document.getElementById('mailTemplateKey').value = template.template_key;
+    document.getElementById('mailTemplateName').value = template.template_name;
+    document.getElementById('mailTemplateSubject').value = template.subject_template;
+    document.getElementById('mailTemplateBody').value = template.body_template;
+    document.getElementById('mailTemplateActive').checked = template.is_active;
+    document.getElementById('mailTemplateDialog').showModal();
+  }
+
+  function saveMailTemplate(event) {
+    event.preventDefault();
+    setAdminBusy(true, '正在儲存郵件範本…');
+    const payload = {
+      template_key: document.getElementById('mailTemplateKey').value,
+      template_name: document.getElementById('mailTemplateName').value,
+      subject_template: document.getElementById('mailTemplateSubject').value,
+      body_template: document.getElementById('mailTemplateBody').value,
+      is_active: document.getElementById('mailTemplateActive').checked
+    };
+    google.script.run.withSuccessHandler(data => {
+      adminState.mail = data;
+      renderMailCenter();
+      setAdminBusy(false);
+      document.getElementById('mailTemplateDialog').close();
+      showAdminToast('郵件範本已更新。');
+    }).withFailureHandler(handleAdminFailure).MAIL_updateTemplate(payload);
+  }
+
+  function renderMailLogs() {
+    const container = document.getElementById('mailLogList');
+    const rows = adminState.mail.recent_logs;
+    if (!rows.length) { container.innerHTML = adminEmpty('尚無寄送紀錄', '完成第一次測試寄信後會顯示在這裡。'); return; }
+    container.innerHTML = `<table class="data-table mail-log-table"><thead><tr><th>時間</th><th>收件人</th><th>來源</th><th>主旨／附件</th><th>模式</th><th>狀態</th><th>操作者</th></tr></thead><tbody>${rows.map(row => `<tr><td>${escapeAdminHtml(row.sent_at || row.created_at)}</td><td><strong>${escapeAdminHtml(row.recipient_name)}</strong><br><small>${escapeAdminHtml(row.recipient_email)}</small></td><td>${escapeAdminHtml(mailSourceLabel(row.source_module))}<br><small>${escapeAdminHtml(row.source_entity_id)}</small></td><td>${escapeAdminHtml(row.subject)}${row.attachment_name ? `<br><small>附件：${escapeAdminHtml(row.attachment_name)}</small>` : ''}${row.error_message ? `<br><small class="mail-error">${escapeAdminHtml(row.error_message)}</small>` : ''}</td><td>${row.test_mode ? `<span class="status status--NO_SHOW">測試<br>${escapeAdminHtml(row.actual_recipient)}</span>` : '<span class="status status--COMPLETED">正式</span>'}</td><td><span class="status ${mailStatusTone(row.delivery_status)}">${escapeAdminHtml(mailStatusLabel(row.delivery_status))}</span><br><small>${escapeAdminHtml(row.audit_id)}</small></td><td>${escapeAdminHtml(row.actor_email)}</td></tr>`).join('')}</tbody></table>`;
+  }
+
+  function mailScopeLabel(scope) { return ({ GENERAL:'一般', BOOKING:'點名／預約', HISTORY:'志工履歷', BLOOD:'捐血', EDUCATION:'前後測' })[scope] || scope; }
+  function mailSourceLabel(source) { return ({ MAIL_CENTER:'郵件中心', ATTENDANCE:'今日點名', SERVICE_HISTORY:'志工履歷', BLOOD:'捐血', EDUCATION:'前後測' })[source] || source; }
+  function mailStatusLabel(status) { return ({ ACCEPTED:'已交付', FAILED:'失敗', PENDING:'待確認' })[status] || status; }
+  function mailStatusTone(status) { return status === 'ACCEPTED' ? 'status--COMPLETED' : (status === 'FAILED' ? 'status--NO_SHOW' : 'status--BOOKED'); }
+
+  function mailSendHistoryRpc(payload) {
+    return new Promise((resolve, reject) => {
+      google.script.run.withSuccessHandler(resolve).withFailureHandler(reject).MAIL_sendHistoryEmail(payload);
+    });
+  }
+
+  function adminRequestId(prefix) {
+    const uuid = window.crypto && typeof window.crypto.randomUUID === 'function'
+      ? window.crypto.randomUUID()
+      : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    return `${prefix}-${uuid}`;
+  }
+
+  function openPrintWindow(message) {
+    const win = window.open('', '_blank');
+    if (!win) { showAdminToast('瀏覽器已阻擋列印視窗，請允許彈出式視窗後重試。', true); return null; }
+    win.document.write(`<p style="font-family:sans-serif;padding:32px">${escapeAdminHtml(message)}</p>`);
+    return win;
+  }
+
+  function writePrintWindow(win, title, body, generatedAt, options = {}) {
+    if (!win) return;
+    const pageSize = options.pageSize || 'A4 portrait';
+    const bodyClass = String(options.bodyClass || '');
+    const baseCss = `@page{size:${pageSize};margin:12mm}*{box-sizing:border-box}html{background:#eef2f4}body{font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;color:#172b3a;margin:0;background:#fff}body>.document-title{font-size:20px;margin:0 0 5px}body>.meta{margin:0 0 15px;color:#5e6d77;font-size:10px}.report-page{break-after:page;page-break-after:always}.report-page:last-child{break-after:auto;page-break-after:auto}.document-heading{text-align:center}.document-heading h1{margin:4px 0 8px;font-size:23px}.document-heading p{margin:4px 0 12px}.report-summary{display:flex;justify-content:space-between;gap:15px;margin:10px 0;padding:8px 10px;background:#f2f5f7;border-left:4px solid #8e2635;font-size:10px}table{width:100%;border-collapse:collapse}thead{display:table-header-group}tfoot{display:table-footer-group;font-weight:800}tr{break-inside:avoid;page-break-inside:avoid}th,td{border:1px solid #7f8b93;padding:5px 6px;text-align:left;vertical-align:middle}th{background:#e8eef2}.student-meta{display:flex;justify-content:space-between;gap:15px;margin:12px 0;font-size:13px}.signatures{display:flex;justify-content:flex-end;gap:28px;margin-top:18px;font-size:11px;break-inside:avoid}.document-footer{display:flex;justify-content:space-between;gap:15px;margin-top:10px;font-size:8.5px}.blood-table{font-size:9.5px}.blood-table .student-name{font-weight:800}.blood-table .check-cell{text-align:center;font-size:16px;width:8mm;height:8mm}.blood-table .note-cell{min-width:34mm}.blood-report .school-name{margin:0;font-size:15px;font-weight:800}@media screen{body{width:min(1100px,100%);margin:auto;padding:24px;box-shadow:0 12px 50px rgba(20,40,55,.12)}.report-page{margin-bottom:24px}}@media print{html,body{background:#fff}body{width:auto;padding:0;box-shadow:none}body>.document-title,body>.meta{display:none}}`;
+    const html = ['<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>', escapeAdminHtml(title), '</title><style>', baseCss, options.extraCss || '', '</style></head><body class="', escapeAdminHtml(bodyClass), '"><h1 class="document-title">', escapeAdminHtml(title), '</h1><p class="meta">產生時間：', escapeAdminHtml(generatedAt), '</p>', body, '<div class="demo-ribbon" aria-label="展示版">AI 虛擬資料展示版｜不連接正式校務資料</div></body></html>'].join('');
+    win.document.open();
+    win.document.write(html);
+    win.document.close();
+    win.focus();
+    setTimeout(() => { try { win.print(); } catch (error) { showAdminToast('無法自動開啟列印視窗，請在新視窗按 Ctrl+P。', true); } }, 250);
+  }
+
+  function setAdminBusy(busy, text) { document.getElementById('busyOverlay').hidden = !busy; if (text) document.getElementById('busyText').textContent = text; }
+  function handleAdminFailure(error) { setAdminBusy(false); showAdminToast(error && error.message ? error.message : String(error), true); }
+  function showAdminFatal(error) { document.getElementById('loading').hidden = true; document.getElementById('adminApp').hidden = true; document.getElementById('errorMessage').textContent = error && error.message ? error.message : String(error); document.getElementById('errorScreen').hidden = false; }
+  let adminToastTimer;
+  function showAdminToast(message, isError) { const toast = document.getElementById('toast'); toast.textContent = message; toast.classList.toggle('is-error', !!isError); toast.classList.add('is-visible'); clearTimeout(adminToastTimer); adminToastTimer = setTimeout(() => toast.classList.remove('is-visible'), 4200); }
+  function studentMeta(row) { return `${row.class_name}班 ${row.seat_no}號・${row.student_id}`; }
+  function shortDate(value) { const parts = String(value).split('-'); return parts.length === 3 ? `${Number(parts[1])}/${Number(parts[2])}` : value; }
+  function adminEmpty(title, description) { return `<div class="empty"><strong>${escapeAdminHtml(title)}</strong>${escapeAdminHtml(description)}</div>`; }
+  function escapeAdminHtml(value) { return String(value ?? '').replace(/[&<>'"]/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[character])); }
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <base target="_top">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#102f4b">
+    <title>宜中校園服務平台</title>
+    <style>
+  :root { --navy:#102f4b; --ink:#173044; --muted:#687c8d; --paper:#fff; --bg:#f2f6f8; --line:#dbe4ea; --gold:#efb94f; }
+  * { box-sizing:border-box; }
+  [hidden] { display:none !important; }
+  html { font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif; color:var(--ink); background:var(--bg); }
+  body { margin:0; min-height:100vh; background:radial-gradient(circle at 90% 0,#d7ecf7 0,transparent 34rem),linear-gradient(180deg,#f8fbfc,var(--bg)); }
+  button,a { font:inherit; }
+  .portal { width:min(1180px,100%); margin:auto; padding:28px clamp(18px,4vw,48px) 44px; }
+  .topbar { display:flex; justify-content:space-between; align-items:center; gap:24px; padding:26px; color:white; border-radius:28px; background:linear-gradient(135deg,#0a253c,#123f62 65%,#176b78); box-shadow:0 18px 48px rgba(16,47,75,.16); }
+  .brand { display:flex; align-items:center; gap:17px; }
+  .brand-mark { width:62px; height:62px; display:grid; place-items:center; border-radius:18px; color:var(--navy); background:var(--gold); font-weight:950; letter-spacing:.06em; }
+  h1 { margin:4px 0 0; font-size:clamp(27px,4vw,40px); }
+  .eyebrow { margin:0; color:#168477; font-size:11px; font-weight:950; letter-spacing:.15em; }
+  .topbar .eyebrow { color:#b8e1e4; }
+  .identity { min-width:220px; padding:13px 16px; text-align:right; border:1px solid rgba(255,255,255,.22); border-radius:17px; background:rgba(255,255,255,.09); }
+  .identity span,.identity strong,.identity small { display:block; }
+  .identity span { color:#f6d98f; font-size:12px; font-weight:900; }
+  .identity strong { margin:2px 0; font-size:18px; }
+  .identity small { color:#d5e5ee; line-height:1.45; }
+  .welcome { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin:28px 0 20px; }
+  .welcome h2 { margin:5px 0 7px; color:var(--navy); font-size:clamp(25px,4vw,34px); }
+  .welcome p:not(.eyebrow) { margin:0; color:var(--muted); }
+  .security-note { display:grid; gap:2px; min-width:250px; padding:13px 16px; border:1px solid #bfe0d8; border-radius:15px; background:#eaf7f3; color:#146f63; text-align:right; }
+  .security-note span { font-size:12px; }
+  .module-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+  .module-card { position:relative; min-height:245px; display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; padding:27px; color:white; border-radius:27px; text-decoration:none; box-shadow:0 15px 38px rgba(23,48,68,.12); transition:transform .18s ease,box-shadow .18s ease; }
+  .module-card:hover { transform:translateY(-4px); box-shadow:0 21px 48px rgba(23,48,68,.18); }
+  .module-card::after { content:""; position:absolute; width:190px; height:190px; right:-60px; bottom:-80px; border-radius:50%; background:rgba(255,255,255,.10); }
+  .module-card[data-theme="blue"] { background:linear-gradient(135deg,#154d7a,#1d6b96); }
+  .module-card[data-theme="red"] { background:linear-gradient(135deg,#8d2635,#c34851); }
+  .module-card[data-theme="green"] { background:linear-gradient(135deg,#176357,#238c77); }
+  .module-card[data-theme="amber"] { background:linear-gradient(135deg,#9a5317,#d88222); }
+  .module-card[data-theme="purple"] { background:linear-gradient(135deg,#56357d,#8155ad); }
+  .module-card[data-theme="dark"] { background:linear-gradient(135deg,#222b35,#3d4d5c); }
+  .module-card__top { display:flex; justify-content:space-between; gap:18px; align-items:flex-start; }
+  .module-icon { width:58px; height:58px; display:grid; flex:0 0 auto; place-items:center; border-radius:18px; background:rgba(255,255,255,.17); font-size:21px; font-weight:950; }
+  .module-card h3 { margin:12px 0 5px; font-size:clamp(24px,3.2vw,32px); }
+  .module-card__subtitle { margin:0; color:rgba(255,255,255,.78); font-weight:800; }
+  .module-card__description { max-width:82%; margin:25px 0 0; color:rgba(255,255,255,.9); line-height:1.55; }
+  .module-card__action { position:relative; z-index:1; display:flex; justify-content:space-between; align-items:center; margin-top:16px; font-weight:950; }
+  .module-card__arrow { width:38px; height:38px; display:grid; place-items:center; border-radius:50%; background:white; color:var(--navy); }
+  footer { margin-top:38px; padding-top:20px; text-align:center; color:var(--muted); border-top:1px solid var(--line); }
+  footer p { margin:0 0 5px; }
+  .loading,.error-screen { min-height:100vh; display:grid; place-content:center; gap:14px; padding:24px; text-align:center; color:var(--navy); }
+  .loading .brand-mark { margin:auto; animation:pulse 1.2s infinite; }
+  .error-card { width:min(470px,100%); padding:35px; border-radius:27px; background:white; box-shadow:0 20px 55px rgba(16,47,75,.15); }
+  .error-symbol { width:56px; height:56px; display:grid; place-items:center; margin:auto; border-radius:50%; color:#a62e3c; background:#fdecef; font-size:28px; font-weight:950; }
+  .error-card h1 { color:var(--navy); }
+  .error-card p { color:var(--muted); line-height:1.7; }
+  .error-card button { min-height:46px; padding:0 20px; border:0; border-radius:13px; background:#168477; color:white; font-weight:900; cursor:pointer; }
+  @keyframes pulse { 50% { transform:scale(1.05); box-shadow:0 0 0 13px rgba(239,185,79,.15); } }
+  @media(max-width:760px){
+    .portal { padding:14px 14px 34px; }
+    .topbar { align-items:flex-start; padding:20px; border-radius:22px; }
+    .brand-mark { width:50px; height:50px; border-radius:14px; font-size:13px; }
+    .topbar .eyebrow { display:none; }
+    .identity { min-width:0; max-width:44%; padding:10px 12px; }
+    .identity small:last-child { display:none; }
+    .welcome { align-items:flex-start; flex-direction:column; }
+    .security-note { min-width:100%; text-align:left; }
+    .module-grid { grid-template-columns:1fr; }
+    .module-card { min-height:220px; padding:23px; }
+  }
+  @media(max-width:440px){ .brand h1{font-size:22px}.identity strong{font-size:15px}.module-card__description{max-width:100%} }
+</style>
+
+  <style>.demo-ribbon{position:fixed;z-index:9999;right:14px;bottom:12px;padding:8px 12px;border-radius:999px;background:#fff7dc;color:#765000;border:1px solid #e4bd5b;box-shadow:0 5px 18px rgba(0,0,0,.12);font:800 12px/1.2 "Microsoft JhengHei",sans-serif}@media print{.demo-ribbon{display:none}}</style></head>
+  <body>
+    <section id="loading" class="loading" role="status">
+      <div class="brand-mark">宜中</div>
+      <p>正在確認學校帳號與可用功能…</p>
+    </section>
+
+    <main id="portal" class="portal" hidden>
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">宜中</div>
+          <div>
+            <p class="eyebrow">YLSH CAMPUS SERVICES</p>
+            <h1>宜中校園服務平台</h1>
+          </div>
+        </div>
+        <div class="identity">
+          <span id="identityRole">—</span>
+          <strong id="identityName">—</strong>
+          <small id="identityMeta">—</small>
+          <small id="identityEmail">—</small>
+        </div>
+      </header>
+
+      <section class="welcome">
+        <div>
+          <p class="eyebrow">WELCOME</p>
+          <h2>今天想使用哪一項服務？</h2>
+          <p>系統已依照你的學校帳號身分，顯示可以使用的功能。</p>
+        </div>
+        <div class="security-note"><b>帳號已驗證</b><span>功能權限仍會在進入後再次檢查</span></div>
+      </section>
+
+      <section id="moduleGrid" class="module-grid" aria-label="可用功能"></section>
+
+      <footer>
+        <p>如有帳號、報名或資料問題，請洽學務處衛生組。</p>
+        <small id="updatedAt"></small>
+      </footer>
+    </main>
+
+    <section id="errorScreen" class="error-screen" hidden>
+      <div class="error-card">
+        <div class="error-symbol">!</div>
+        <h1>目前無法進入平台</h1>
+        <p id="errorMessage"></p>
+        <button type="button" onclick="location.reload()">重新載入</button>
+      </div>
+    </section>
+    <script src="mock-gas.js"></script>
+<script>
+  const portalState = { requestId: 0, timeoutId: null };
+
+  document.addEventListener('DOMContentLoaded', () => loadPortal(0));
+
+  function loadPortal(attempt = 0) {
+    const requestId = ++portalState.requestId;
+    clearTimeout(portalState.timeoutId);
+    document.getElementById('loading').hidden = false;
+    document.getElementById('portal').hidden = true;
+    document.getElementById('errorScreen').hidden = true;
+
+    portalState.timeoutId = setTimeout(() => {
+      if (requestId !== portalState.requestId) return;
+      showPortalError({ message: '後台仍在讀取資料，可能正逢 Google 服務忙碌。若稍後完成，畫面會自動顯示。' });
+    }, 30000);
+
+    google.script.run
+      .withSuccessHandler(data => {
+        if (requestId !== portalState.requestId) return;
+        clearTimeout(portalState.timeoutId);
+        renderPortal(data);
+      })
+      .withFailureHandler(error => {
+        if (requestId !== portalState.requestId) return;
+        clearTimeout(portalState.timeoutId);
+        if (attempt < 1) {
+          setTimeout(() => {
+            if (requestId === portalState.requestId) loadPortal(attempt + 1);
+          }, 800);
+          return;
+        }
+        showPortalError(error);
+      })
+      .PORTAL_getHomeData();
+  }
+
+  function renderPortal(data) {
+    document.getElementById('identityRole').textContent = data.identity.type_label;
+    document.getElementById('identityName').textContent = data.identity.name || data.identity.email;
+    document.getElementById('identityMeta').textContent = data.identity.meta || '校內帳號';
+    document.getElementById('identityEmail').textContent = data.identity.email;
+    const elapsed = Number(data.server_elapsed_ms || 0);
+    document.getElementById('updatedAt').textContent =
+      `資料更新：${data.generated_at}${elapsed ? `｜後端 ${Math.max(.1, elapsed / 1000).toFixed(1)} 秒` : ''}`;
+    const grid = document.getElementById('moduleGrid');
+    grid.innerHTML = '';
+    data.modules.forEach(module => {
+      const card = document.createElement('a');
+      card.className = 'module-card';
+      card.dataset.theme = module.theme;
+      card.href = module.url;
+      if (module.external) {
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
+      }
+      card.innerHTML = `
+        <div>
+          <div class="module-card__top">
+            <div><p class="module-card__subtitle">${escapePortalHtml(module.subtitle)}</p><h3>${escapePortalHtml(module.title)}</h3></div>
+            <span class="module-icon" aria-hidden="true">${escapePortalHtml(module.icon)}</span>
+          </div>
+          <p class="module-card__description">${escapePortalHtml(module.description)}</p>
+        </div>
+        <div class="module-card__action"><span>${escapePortalHtml(module.action_label || (module.external ? '開啟外部服務' : '進入功能'))}</span><span class="module-card__arrow">→</span></div>`;
+      grid.appendChild(card);
+    });
+    document.getElementById('loading').hidden = true;
+    document.getElementById('errorScreen').hidden = true;
+    document.getElementById('portal').hidden = false;
+  }
+
+  function showPortalError(error) {
+    document.getElementById('loading').hidden = true;
+    document.getElementById('portal').hidden = true;
+    document.getElementById('errorMessage').textContent = error && error.message ? error.message : String(error);
+    document.getElementById('errorScreen').hidden = false;
+  }
+
+  function escapePortalHtml(value) {
+    return String(value ?? '').replace(/[&<>'"]/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[character]));
+  }
+</script>
+
+  <div class="demo-ribbon" aria-label="展示版">AI 虛擬資料展示版｜不連接正式校務資料</div></body>
+</html>

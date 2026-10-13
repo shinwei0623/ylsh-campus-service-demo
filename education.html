@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <base target="_top">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#17142b">
+    <title>宜蘭高中教職員愛滋及性傳染病教育專區</title>
+    <style>
+  .edu-form-dialog{width:min(980px,calc(100% - 20px));height:min(90vh,900px);padding:0;border:0;border-radius:18px;overflow:hidden}.edu-form-dialog::backdrop{background:rgba(21,19,34,.72)}.edu-form-dialog__bar{height:58px;display:flex;align-items:center;gap:14px;padding:0 16px;background:#201d32;color:#fff}.edu-form-dialog__bar strong{flex:1}.edu-form-dialog__bar a{color:#ffd469;font-weight:800;text-decoration:none}.edu-form-dialog__bar button{width:38px;height:38px;border:0;border-radius:50%;background:#fff;color:#201d32;font-size:24px}.edu-form-dialog iframe{width:100%;height:calc(100% - 58px);border:0;background:#fff}
+  :root{--edu-ink:#17142b;--edu-paper:#fbf7ef;--edu-white:#fffdfa;--edu-violet:#6c50ff;--edu-coral:#ff6b57;--edu-mint:#68d6b0;--edu-yellow:#f2c84b;--edu-line:rgba(23,20,43,.17)}
+  *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--edu-paper);color:var(--edu-ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}button,a{font:inherit}[hidden]{display:none!important}
+  .edu-site{min-height:100vh;overflow:hidden;background:var(--edu-paper);color:var(--edu-ink)}.edu-site a{color:inherit;text-decoration:none}
+  .edu-loading,.edu-error{min-height:100vh;display:grid;place-content:center;justify-items:center;gap:12px;padding:30px;text-align:center}.edu-loading p,.edu-error p{color:#6b6576}.edu-error h1{margin:8px 0 0}.edu-error button{padding:11px 18px;border:0;border-radius:6px;color:#fff;background:var(--edu-ink);cursor:pointer}
+  .edu-header{width:min(1180px,calc(100% - 48px));height:80px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--edu-line)}
+  .edu-brand{display:flex;gap:12px;align-items:center;font-size:15px;font-weight:900;letter-spacing:.03em}.edu-brand small{display:block;margin-top:2px;color:#736d80;font-size:10px;font-weight:650;letter-spacing:.1em}.edu-brand-mark{width:36px;height:36px;display:grid;place-items:center;color:#fff;background:var(--edu-ink);border-radius:50%;font-family:Georgia,serif;font-size:13px}
+  .edu-header nav{display:flex;align-items:center;gap:24px;font-size:13px;font-weight:750}.edu-header nav a:hover{color:var(--edu-violet)}.edu-nav-cta{padding:10px 15px;border:1px solid var(--edu-ink);border-radius:999px}
+  .edu-kicker,.edu-meta,.edu-resource-top,.edu-resource-bottom{display:flex}.edu-hero{width:min(1180px,calc(100% - 48px));min-height:660px;margin:0 auto;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:6vw;padding:68px 0 90px}.edu-kicker{gap:9px;margin-bottom:25px;flex-wrap:wrap}.edu-kicker span{padding:7px 10px;border:1px solid var(--edu-line);background:rgba(255,255,255,.55);font-size:11px;font-weight:750}.edu-kicker span:first-child{color:#fff;background:var(--edu-violet);border-color:var(--edu-violet)}
+  .edu-hero h1{margin:0;font-size:clamp(56px,6.2vw,88px);line-height:1.03;letter-spacing:-.065em;font-weight:950}.edu-hero h1 em{display:block;color:var(--edu-violet);font-style:normal}.edu-hero-copy>p{max-width:630px;margin:28px 0 0;color:#554f65;font-size:clamp(17px,1.55vw,21px);line-height:1.8}.edu-hero-actions{display:flex;align-items:center;gap:28px;margin-top:34px}
+  .edu-button{min-height:52px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;gap:30px;border-radius:7px;font-size:14px;font-weight:850;transition:transform .2s ease,box-shadow .2s ease}.edu-button:hover{transform:translateY(-2px)}.edu-button.primary{color:#fff;background:var(--edu-ink);box-shadow:7px 7px 0 var(--edu-yellow)}.edu-button.light{color:var(--edu-ink);background:#fff;box-shadow:7px 7px 0 rgba(0,0,0,.22)}
+  .edu-meta{gap:32px;margin:50px 0 0}.edu-meta div{padding-left:13px;border-left:2px solid var(--edu-coral)}.edu-meta dt{color:#867f90;font-size:10px;font-weight:750;letter-spacing:.08em}.edu-meta dd{margin:5px 0 0;font-size:12px;font-weight:800}
+  .edu-hero-art{min-height:470px;position:relative;display:grid;place-items:center}.edu-hero-art:before{content:"";position:absolute;width:350px;height:350px;background:var(--edu-violet);border-radius:41% 59% 56% 44%/53% 38% 62% 47%;transform:rotate(-7deg)}.edu-orbit{position:absolute;z-index:1;border:1px solid rgba(23,20,43,.38);border-radius:50%}.orbit-a{width:450px;height:245px;transform:rotate(35deg)}.orbit-b{width:410px;height:290px;transform:rotate(-26deg)}
+  .edu-uu-card{position:relative;z-index:2;width:290px;padding:36px;color:#fff;background:var(--edu-ink);border:1px solid rgba(255,255,255,.25);box-shadow:18px 19px 0 rgba(23,20,43,.15);transform:rotate(3deg)}.edu-uu-card>span{color:#b9b3cf;font-size:10px;font-weight:750;letter-spacing:.12em}.edu-uu-card strong{display:block;margin-top:20px;color:var(--edu-yellow);font-size:66px;letter-spacing:-.07em;line-height:1}.edu-uu-card p{margin:20px 0 0;font-size:18px;line-height:1.6;font-weight:850}
+  .edu-float{position:absolute;z-index:3;padding:10px 14px;background:#fff;border:1px solid var(--edu-ink);box-shadow:4px 4px 0 var(--edu-ink);font-size:11px;font-weight:850}.float-one{top:67px;left:5%;transform:rotate(-4deg)}.float-two{right:-1%;bottom:70px;transform:rotate(5deg)}.edu-dot{position:absolute;z-index:4;top:45px;right:13%;width:44px;height:44px;background:var(--edu-coral);border-radius:50%}
+  .edu-eyebrow{margin:0 0 10px;color:#676075;font-size:10px;font-weight:850;letter-spacing:.18em}.edu-section-heading h2,.edu-course h2,.edu-respect h2{margin:0;font-size:clamp(36px,4.2vw,58px);line-height:1.12;letter-spacing:-.045em}
+  .edu-course{padding:90px max(24px,calc((100vw - 1180px)/2));display:grid;grid-template-columns:1.2fr .8fr;gap:7vw;align-items:center;background:var(--edu-coral)}.edu-course-copy>p:not(.edu-eyebrow){max-width:650px;margin:25px 0 30px;line-height:1.85}.edu-course-time{padding:34px;color:#fff;background:var(--edu-ink);box-shadow:14px 14px 0 rgba(23,20,43,.18)}.edu-course-time>span{font-size:11px;letter-spacing:.12em}.edu-course-time strong{display:block;margin-top:14px;color:var(--edu-yellow);font-family:Georgia,serif;font-size:96px;line-height:1}.edu-course-time small{letter-spacing:.22em}.edu-time-bar{height:5px;margin-top:25px;background:#433e55}.edu-time-bar i{display:block;width:78%;height:100%;background:var(--edu-mint)}.edu-course-time p{margin:13px 0 0;color:#bcb6ca;font-size:11px}
+  .edu-assessment,.edu-resources,.edu-videos{padding:100px max(24px,calc((100vw - 1180px)/2));background:var(--edu-white)}.edu-section-heading{display:grid;grid-template-columns:1fr 390px;align-items:end;gap:45px;margin-bottom:42px}.edu-section-heading>p{margin:0;color:#696273;line-height:1.8;font-size:14px}.edu-section-heading.compact{margin-bottom:35px}.edu-assessment-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.edu-test-card{padding:35px;border:1px solid var(--edu-ink);box-shadow:8px 8px 0 var(--edu-ink)}.edu-test-card.pretest{background:#ded7ff}.edu-test-card.posttest{background:#c9f0e2}.edu-test-card>span{font-size:10px;font-weight:850;letter-spacing:.15em}.edu-test-card h3{margin:35px 0 12px;font-size:28px}.edu-test-card p{min-height:52px;margin:0 0 25px;color:#514b60;line-height:1.7;font-size:14px}
+  .edu-test-button{width:100%;min-height:50px;display:flex;align-items:center;justify-content:center;border:0;color:#fff!important;background:var(--edu-ink);font-weight:800;transition:transform .18s ease,box-shadow .18s ease}.edu-test-button:hover{transform:translateY(-2px);box-shadow:4px 4px 0 rgba(23,20,43,.24)}.edu-test-button.is-disabled{color:#aaa7b4!important;background:#373343;opacity:.72;pointer-events:none}.edu-test-card small{display:block;margin-top:11px;color:#5d5768;font-size:10px}
+  .edu-personal-status{display:grid;grid-template-columns:260px 1fr;gap:32px;align-items:center;margin-top:34px;padding:24px 26px;border-left:4px solid var(--edu-coral);background:#f5efe6}.edu-personal-status h3{margin:0;font-size:21px}.edu-status-summary>p{margin:0;color:#655f70;font-size:13px}.edu-status-items{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.edu-status-items span,.edu-status-items strong{padding:7px 10px;border:1px solid var(--edu-line);background:#fff;font-size:11px}.edu-status-items .is-complete{color:#165e4f;border-color:#68d6b0;background:#e2f7ef}
+  .edu-knowledge{padding:100px max(24px,calc((100vw - 1180px)/2));background:var(--edu-paper)}.edu-knowledge-grid{display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid var(--edu-ink);border-top:1px solid var(--edu-ink)}.edu-knowledge-grid article{min-height:340px;padding:26px;display:flex;flex-direction:column;border-right:1px solid var(--edu-ink);border-bottom:1px solid var(--edu-ink)}.edu-knowledge-grid .violet{background:#ded7ff}.edu-knowledge-grid .coral{background:#ffc8be}.edu-knowledge-grid .yellow{background:#f8e8a8}.edu-knowledge-grid .mint{background:#c9f0e2}.edu-knowledge-grid article>span{width:fit-content;padding:6px 9px;border:1px solid var(--edu-ink);font-size:11px;font-weight:900}.edu-knowledge-grid h3{margin:42px 0 13px;font-size:21px;line-height:1.35}.edu-knowledge-grid p{margin:0;color:#554f60;font-size:13px;line-height:1.7}.edu-knowledge-grid a{margin-top:auto;padding-top:20px;font-size:12px;font-weight:850}
+  .edu-videos{background:var(--edu-ink);color:#fff}.edu-videos .edu-eyebrow{color:#a69fb8}.edu-videos .edu-section-heading>p{color:#b7b1c4}.edu-video-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.edu-video-grid article{border:1px solid #4a455c;background:#211d35}.edu-video-frame{position:relative;aspect-ratio:16/9;background:#0e0c16;overflow:hidden}.edu-video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.edu-video-grid article>div:last-child{padding:22px}.edu-video-grid span{color:var(--edu-yellow);font-size:10px;font-weight:850;letter-spacing:.1em}.edu-video-grid h3{margin:9px 0 4px;font-size:21px}.edu-video-grid p{margin:0;color:#aaa4b7;font-size:12px}
+  .edu-filters{display:flex;gap:9px;margin-bottom:30px;overflow-x:auto;padding-bottom:5px}.edu-filters button{flex:0 0 auto;padding:9px 14px;border:1px solid var(--edu-line);border-radius:999px;background:transparent;color:#696273;font-size:12px;cursor:pointer}.edu-filters button.active{color:#fff;background:var(--edu-ink);border-color:var(--edu-ink)}.edu-resource-grid{display:grid;grid-template-columns:repeat(3,1fr);border-left:1px solid var(--edu-line);border-top:1px solid var(--edu-line)}.edu-resource-grid>a{min-height:285px;padding:25px;display:flex;flex-direction:column;border-right:1px solid var(--edu-line);border-bottom:1px solid var(--edu-line);background:#fff;transition:transform .18s ease,box-shadow .18s ease}.edu-resource-grid>a:hover{z-index:2;transform:translate(-4px,-4px);box-shadow:7px 7px 0 var(--edu-ink)}.edu-resource-grid>a.featured{background:#f3efff}.edu-resource-top{justify-content:space-between;align-items:center;color:#777080;font-size:10px;font-weight:800}.edu-resource-top>span{padding:5px 8px;color:var(--edu-ink);background:var(--edu-yellow)}.edu-resource-grid h3{margin:35px 0 12px;font-size:20px;line-height:1.4}.edu-resource-grid p{margin:0;color:#686272;font-size:13px;line-height:1.7}.edu-resource-bottom{justify-content:space-between;align-items:center;margin-top:auto;padding-top:20px;color:#6d6678;font-size:11px;font-weight:750}.edu-resource-bottom span:last-child{color:var(--edu-ink);font-size:20px}.edu-resource-count{margin:20px 0 0;color:#777080;font-size:11px}.edu-resource-empty{grid-column:1/-1;padding:40px;border-right:1px solid var(--edu-line);border-bottom:1px solid var(--edu-line);color:#6d6678;text-align:center}
+  .edu-respect{padding:95px max(24px,calc((100vw - 1180px)/2));display:grid;grid-template-columns:1.15fr .85fr;gap:7vw;align-items:center;background:var(--edu-yellow)}.edu-respect h2 em{color:var(--edu-violet);font-style:normal}.edu-respect-points{padding:30px;background:#fff;border:1px solid var(--edu-ink);box-shadow:9px 9px 0 var(--edu-ink)}.edu-respect-points p{display:flex;gap:12px;padding-bottom:15px;border-bottom:1px solid var(--edu-line);font-size:13px;line-height:1.5}.edu-respect-points p span{color:var(--edu-violet);font-weight:900}.edu-respect-points a{display:inline-block;margin-top:13px;font-size:12px;font-weight:850}
+  .edu-footer{width:min(1180px,calc(100% - 48px));min-height:180px;margin:0 auto;display:grid;grid-template-columns:260px 1fr auto;align-items:center;gap:40px}.edu-footer p{max-width:650px;color:#756e7e;font-size:11px;line-height:1.7}.edu-footer>a{font-size:12px;font-weight:800}
+  @media(max-width:1060px){.edu-header nav{gap:14px}.edu-header nav a:not(.edu-nav-cta):not(#eduPortalLink){display:none}}
+  @media(max-width:960px){.edu-hero{grid-template-columns:1fr;padding-top:58px}.edu-hero-art{min-height:440px}.edu-resource-grid{grid-template-columns:repeat(2,1fr)}.edu-course,.edu-respect{grid-template-columns:1fr}.edu-course-time{max-width:420px}.edu-knowledge-grid{grid-template-columns:repeat(2,1fr)}.edu-footer{grid-template-columns:1fr 1fr;padding:45px 0}.edu-footer p{grid-row:2}.edu-personal-status{grid-template-columns:1fr}}
+  @media(max-width:680px){.edu-header,.edu-hero,.edu-footer{width:min(100% - 32px,1180px)}.edu-header{height:70px}.edu-header nav a:not(.edu-nav-cta){display:none}.edu-header nav{gap:0}.edu-hero{min-height:auto;gap:30px;padding:48px 0 50px}.edu-hero h1{font-size:50px}.edu-hero-copy>p{font-size:16px}.edu-hero-actions{align-items:flex-start;flex-direction:column;gap:24px}.edu-meta{gap:15px;flex-wrap:wrap}.edu-hero-art{min-height:390px;transform:scale(.88);margin:-20px -25px}.edu-course,.edu-assessment,.edu-knowledge,.edu-videos,.edu-resources,.edu-respect{padding-top:70px;padding-bottom:70px}.edu-assessment-grid,.edu-knowledge-grid,.edu-video-grid,.edu-resource-grid{grid-template-columns:1fr}.edu-section-heading{grid-template-columns:1fr;gap:18px}.edu-course-time strong{font-size:78px}.edu-test-card p{min-height:auto}.edu-personal-status{gap:14px}.edu-knowledge-grid article{min-height:300px}.edu-footer{grid-template-columns:1fr;gap:18px}.edu-footer p{grid-row:auto}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition-duration:.01ms!important}}
+</style>
+
+  <style>.demo-ribbon{position:fixed;z-index:9999;right:14px;bottom:12px;padding:8px 12px;border-radius:999px;background:#fff7dc;color:#765000;border:1px solid #e4bd5b;box-shadow:0 5px 18px rgba(0,0,0,.12);font:800 12px/1.2 "Microsoft JhengHei",sans-serif}@media print{.demo-ribbon{display:none}}</style></head>
+  <body>
+    <section id="eduLoading" class="edu-loading" role="status">
+      <span class="edu-brand-mark" aria-hidden="true">YL</span>
+      <p>正在載入本學期教育資源…</p>
+    </section>
+
+    <section id="eduError" class="edu-error" hidden>
+      <span class="edu-brand-mark" aria-hidden="true">!</span>
+      <h1>教育專區暫時無法載入</h1>
+      <p id="eduErrorMessage">請稍後重新整理頁面。</p>
+      <button type="button" onclick="location.reload()">重新載入</button>
+    </section>
+
+    <main id="eduApp" class="edu-site" hidden>
+      <div id="top"></div>
+      <header class="edu-header">
+        <a class="edu-brand" href="#top" aria-label="回到教育專區首頁">
+          <span class="edu-brand-mark">YL</span>
+          <span>健康宜中<small>教職員教育專區</small></span>
+        </a>
+        <nav aria-label="專區導覽">
+          <a href="#course">研習內容</a>
+          <a href="#resources">教育資源</a>
+          <a id="eduPortalLink" href="#">返回服務平台</a>
+          <a class="edu-nav-cta" href="#assessment">前後測入口</a>
+        </nav>
+      </header>
+
+      <section class="edu-hero">
+        <div class="edu-hero-copy">
+          <div class="edu-kicker">
+            <span id="eduTermLabel">本學期教職員研習</span>
+            <span>公開瀏覽・不記錄進度</span>
+          </div>
+          <h1>知道更多，<em>少一點誤解。</em></h1>
+          <p>教職員愛滋及性傳染病教育專區。從科學實證出發，認識 U=U、PrEP、PEP、篩檢、反歧視，以及梅毒、淋病與 M痘的防治觀念。</p>
+          <div class="edu-hero-actions">
+            <a class="edu-button primary" href="#course">開始本學期研習 <span aria-hidden="true">↓</span></a>
+          </div>
+          <dl class="edu-meta">
+            <div><dt>承辦單位</dt><dd>學務處衛生組</dd></div>
+            <div><dt>專區更新</dt><dd id="eduUpdatedAt">—</dd></div>
+            <div><dt>正式公告</dt><dd id="eduAnnouncementDate">待校內發布</dd></div>
+          </dl>
+        </div>
+
+        <div class="edu-hero-art" aria-label="U 等於 U：病毒量測不到，就不會透過性行為傳染">
+          <div class="edu-orbit orbit-a"></div>
+          <div class="edu-orbit orbit-b"></div>
+          <article class="edu-uu-card">
+            <span>01 / 科學實證</span>
+            <strong>U = U</strong>
+            <p>病毒量測不到<br>＝不會透過性行為傳染</p>
+          </article>
+          <div class="edu-float float-one">正常相處，不需隔離</div>
+          <div class="edu-float float-two">隱私應被保護</div>
+          <div class="edu-dot"></div>
+        </div>
+      </section>
+
+      <section class="edu-course" id="course">
+        <div class="edu-course-copy">
+          <p class="edu-eyebrow">本學期研習主軸</p>
+          <h2>用 124 分鐘，更新你對 HIV 的理解。</h2>
+          <p>建議以疾管署與台灣愛滋病學會製作的 U=U 數位課程作為主要教材，搭配教育人員教材與性傳染病防治內容。本站只提供連結，不追蹤或記錄觀看進度。</p>
+          <a class="edu-button light" href="https://elearn.hrd.gov.tw/mooc/course_share.php?code=27b1c74ab138ed92e798302f1608f35c" target="_blank" rel="noopener noreferrer">前往 e 等公務園＋課程 <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="edu-course-time" aria-label="課程總長 124 分鐘">
+          <span>建議主課程</span>
+          <strong>124</strong>
+          <small>MINUTES</small>
+          <div class="edu-time-bar"><i></i></div>
+          <p>適用公務人員及一般民眾</p>
+        </div>
+      </section>
+
+      <section class="edu-assessment" id="assessment">
+        <div class="edu-section-heading">
+          <div><p class="edu-eyebrow">ASSESSMENT</p><h2>前測與後測入口</h2></div>
+          <p>請使用校內 Google 帳號進入表單。完成前測與研習內容後，再進行後測。</p>
+        </div>
+        <div class="edu-assessment-grid">
+          <article class="edu-test-card pretest">
+            <span>STEP 1</span><h3>開始前測</h3>
+            <p>研習前先完成前測，請使用校內 Google 帳號作答。</p>
+            <a id="eduPreLink" class="edu-test-button" href="#" target="_blank" rel="noopener noreferrer">開始前測</a>
+            <small>作答時請確認登入帳號正確</small>
+          </article>
+          <article class="edu-test-card posttest">
+            <span>STEP 2</span><h3>完成研習後進行後測</h3>
+            <p>完成本頁課程與教育資源後，再進入後測。</p>
+            <a id="eduPostLink" class="edu-test-button" href="#" target="_blank" rel="noopener noreferrer">進行後測</a>
+            <small>請在完成研習內容後作答</small>
+          </article>
+        </div>
+
+        <div class="edu-personal-status" aria-labelledby="eduStatusTitle">
+          <div><p class="edu-eyebrow">MY STATUS</p><h3 id="eduStatusTitle">個人完成狀態</h3></div>
+          <div class="edu-status-summary">
+            <p id="eduViewerMessage">使用校內帳號進入時，可在此查看個人的前後測完成狀態。</p>
+            <div id="eduStatusItems" class="edu-status-items" hidden>
+              <span id="eduPreStatus">尚未完成前測</span>
+              <span id="eduPostStatus">尚未完成後測</span>
+              <strong id="eduCompletionBadge">尚未完成前後測</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="edu-knowledge">
+        <div class="edu-section-heading compact">
+          <div><p class="edu-eyebrow">KNOW THE OPTIONS</p><h2>四個必懂的保護觀念</h2></div>
+        </div>
+        <div class="edu-knowledge-grid">
+          <article class="violet">
+            <span>U=U</span><h3>測不到，就不會透過性行為傳染</h3>
+            <p>感染者穩定治療並維持病毒量測不到，可以維持健康，也不會透過性行為傳染 HIV。</p>
+            <a href="https://www.cdc.gov.tw/Bulletin/Detail/GD_HGHyQkCsS93iBHICU9g?typeid=9" target="_blank" rel="noopener noreferrer">官方說明 <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="coral">
+            <span>PrEP</span><h3>暴露前，先把保護準備好</h3>
+            <p>經檢驗未感染 HIV 且有需要者，可由醫師評估使用 PrEP；它不能預防其他性傳染病。</p>
+            <a href="https://www.cdc.gov.tw/Category/List/Z5g3WSSWxylz8RXj04z7IA" target="_blank" rel="noopener noreferrer">官方說明 <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="yellow">
+            <span>PEP</span><h3>暴露後，把握 72 小時</h3>
+            <p>可能暴露後請儘速就醫評估，24 小時內最佳，最晚不超過 72 小時。</p>
+            <a href="https://www.cdc.gov.tw/Category/MPage/uo89XT3izngK6IY0wv8BNg" target="_blank" rel="noopener noreferrer">服務資訊 <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="mint">
+            <span>TEST</span><h3>篩檢，是照顧自己的日常</h3>
+            <p>有性行為者建議至少篩檢一次；也可使用匿名篩檢或自我篩檢。</p>
+            <a href="https://www.cdc.gov.tw/Category/MPage/Y4wiJu8wKZ_zDKN5efu9KQ" target="_blank" rel="noopener noreferrer">篩檢資訊 <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+      </section>
+
+      <section class="edu-videos">
+        <div class="edu-section-heading compact">
+          <div><p class="edu-eyebrow">WATCH &amp; LEARN</p><h2>教育影片</h2></div>
+          <p>可自由選看；不記錄播放時間或觀看進度。</p>
+        </div>
+        <div class="edu-video-grid">
+          <article>
+            <div class="edu-video-frame"><iframe src="https://www.youtube-nocookie.com/embed/qb7yJ459boM" title="性病知多少教育影片" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div><span>50 分鐘</span><h3>性病知多少</h3><p>疾管署教育人員教材</p></div>
+          </article>
+          <article>
+            <div class="edu-video-frame"><iframe src="https://www.youtube-nocookie.com/embed/kAMhIm-I-_M" title="性病防護網教育影片" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            <div><span>7 分鐘</span><h3>性病防護網</h3><p>教育部國民及學前教育署</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="edu-resources" id="resources">
+        <div class="edu-section-heading">
+          <div><p class="edu-eyebrow">OFFICIAL RESOURCES</p><h2>官方教育資源</h2></div>
+          <p>以下連往教育部、衛生福利部疾病管制署或 e 等公務園＋等官方來源。</p>
+        </div>
+        <div id="eduFilters" class="edu-filters" role="group" aria-label="依主題篩選資源"></div>
+        <div id="eduResourceGrid" class="edu-resource-grid" aria-live="polite"></div>
+        <p id="eduResourceCount" class="edu-resource-count">正在整理資源…</p>
+      </section>
+
+      <section class="edu-respect">
+        <div><p class="edu-eyebrow">RESPECT IS PREVENTION</p><h2>和感染者一起工作、吃飯、共用廁所，<em>都不會傳染 HIV。</em></h2></div>
+        <div class="edu-respect-points">
+          <p><span>✓</span> 正常相處，不需要隔離或特殊防護</p>
+          <p><span>✓</span> 未經同意，不探問、不揭露感染身分</p>
+          <p><span>✓</span> 不因感染事實影響就學、就業或工作權益</p>
+          <a href="https://www.cdc.gov.tw/Category/MPage/e8xkSW1FeVJBgs5fPLfxLA" target="_blank" rel="noopener noreferrer">閱讀感染者權益保障資訊 <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <footer class="edu-footer">
+        <div class="edu-brand footer-brand"><span class="edu-brand-mark">YL</span><span>國立宜蘭高級中學<small>學務處衛生組</small></span></div>
+        <p>本專區提供官方教育連結，不提供個別醫療診斷。若有暴露風險或健康疑問，請儘速洽詢醫療專業人員或撥打 1922。</p>
+        <a href="#top">回到頂端 ↑</a>
+      </footer>
+    </main>
+
+    <dialog id="eduFormDialog" class="edu-form-dialog">
+      <div class="edu-form-dialog__bar"><strong id="eduFormDialogTitle">線上表單</strong><a id="eduFormExternalLink" href="#" target="_blank" rel="noopener noreferrer">另開新視窗 ↗</a><button id="eduFormClose" type="button" aria-label="關閉">×</button></div>
+      <iframe id="eduFormFrame" title="教育前後測表單" loading="lazy"></iframe>
+    </dialog>
+
+    <script src="mock-gas.js"></script>
+<script>
+  const eduTypeLabels = { VIDEO: '影片', ARTICLE: '文章', PDF: 'PDF 教材', WEBSITE: '網站', OTHER: '其他資源' };
+  const eduState = { requestId: 0, timeoutId: null, resources: [], category: '全部' };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('eduFormClose').addEventListener('click', closeEducationForm);
+    document.getElementById('eduFormDialog').addEventListener('close', () => { document.getElementById('eduFormFrame').src = 'about:blank'; });
+    loadEducation(0);
+  });
+
+  function loadEducation(attempt = 0) {
+    const requestId = ++eduState.requestId;
+    clearTimeout(eduState.timeoutId);
+    document.getElementById('eduLoading').hidden = false;
+    document.getElementById('eduApp').hidden = true;
+    document.getElementById('eduError').hidden = true;
+    eduState.timeoutId = setTimeout(() => {
+      if (requestId === eduState.requestId) {
+        showEducationError({ message: '資料仍在讀取，可能正逢 Google 服務忙碌，請稍後重新載入。' });
+      }
+    }, 30000);
+    google.script.run
+      .withSuccessHandler(data => {
+        if (requestId !== eduState.requestId) return;
+        clearTimeout(eduState.timeoutId);
+        renderEducation(data || {});
+      })
+      .withFailureHandler(error => {
+        if (requestId !== eduState.requestId) return;
+        clearTimeout(eduState.timeoutId);
+        if (attempt < 1) {
+          setTimeout(() => {
+            if (requestId === eduState.requestId) loadEducation(attempt + 1);
+          }, 800);
+          return;
+        }
+        showEducationError(error);
+      })
+      .EDU_getStaffPortalData();
+  }
+
+  function renderEducation(data) {
+    const campaign = data.campaign || {};
+    const availability = data.availability || {};
+    document.getElementById('eduPortalLink').href = `${data.base_url || ''}?page=portal`;
+    document.getElementById('eduTermLabel').textContent = campaign.campaign_name || '教職員健康教育資源';
+    document.getElementById('eduUpdatedAt').textContent = data.generated_at || '—';
+    document.getElementById('eduAnnouncementDate').textContent = availability.campaign_open
+      ? educationPeriod(campaign.start_date, campaign.end_date)
+      : '前後測尚未開放';
+
+    setEducationLink('eduPreLink', availability.pretest_open ? campaign.pretest_url : '', '開始前測', '前測尚未開放');
+    setEducationLink('eduPostLink', availability.posttest_open ? campaign.posttest_url : '', '進行後測', '後測尚未開放');
+    renderEducationCompletion(data.completion || {}, availability);
+    renderEducationResources(data.resources || []);
+
+    document.getElementById('eduLoading').hidden = true;
+    document.getElementById('eduError').hidden = true;
+    document.getElementById('eduApp').hidden = false;
+  }
+
+  function renderEducationCompletion(completion, availability) {
+    const statusItems = document.getElementById('eduStatusItems');
+    const viewerMessage = document.getElementById('eduViewerMessage');
+    const assessmentsAvailable = availability.pretest_open || availability.posttest_open;
+    viewerMessage.textContent = availability.message || '教材可自由瀏覽，前後測表單尚未開放。';
+    statusItems.hidden = !assessmentsAvailable;
+    if (!assessmentsAvailable) return;
+
+    const preStatus = document.getElementById('eduPreStatus');
+    const postStatus = document.getElementById('eduPostStatus');
+    preStatus.textContent = completion.pretest_completed ? '✓ 已完成前測' : '尚未完成前測';
+    postStatus.textContent = completion.posttest_completed ? '✓ 已完成後測' : '尚未完成後測';
+    preStatus.classList.toggle('is-complete', !!completion.pretest_completed);
+    postStatus.classList.toggle('is-complete', !!completion.posttest_completed);
+
+    const badge = document.getElementById('eduCompletionBadge');
+    if (completion.status === 'BOTH_COMPLETED') {
+      badge.textContent = '✓ 前後測皆完成';
+      badge.classList.add('is-complete');
+    } else if (completion.status === 'NOT_STARTED') {
+      badge.textContent = '尚未完成前後測';
+      badge.classList.remove('is-complete');
+    } else {
+      badge.textContent = '進行中｜尚有項目未完成';
+      badge.classList.remove('is-complete');
+    }
+  }
+
+  function setEducationLink(id, url, enabledLabel, disabledLabel) {
+    const link = document.getElementById(id);
+    const enabled = /^https:\/\//i.test(String(url || ''));
+    link.textContent = enabled ? enabledLabel : disabledLabel;
+    link.href = enabled ? url : '#assessment';
+    link.classList.toggle('is-disabled', !enabled);
+    link.setAttribute('aria-disabled', enabled ? 'false' : 'true');
+    link.tabIndex = enabled ? 0 : -1;
+    link.onclick = enabled ? event => {
+      if (!/^https:\/\/(?:docs\.google\.com\/forms\/|forms\.gle\/)/i.test(url)) return;
+      event.preventDefault();
+      openEducationForm(enabledLabel, 'demo-assessment.html?type=' + encodeURIComponent(enabledLabel));
+    } : event => event.preventDefault();
+  }
+
+  function openEducationForm(title, url) {
+    const dialog = document.getElementById('eduFormDialog');
+    document.getElementById('eduFormDialogTitle').textContent = title;
+    document.getElementById('eduFormExternalLink').href = url;
+    document.getElementById('eduFormFrame').src = url + (url.includes('?') ? '&' : '?') + 'embedded=true';
+    dialog.showModal();
+  }
+
+  function closeEducationForm() {
+    document.getElementById('eduFormDialog').close();
+  }
+
+  function renderEducationResources(resources) {
+    eduState.resources = resources.filter(resource => /^https:\/\//i.test(String(resource.url || '')));
+    const categories = ['全部', ...new Set(eduState.resources.map(resource => resource.category || '其他資源'))];
+    const filters = document.getElementById('eduFilters');
+    filters.replaceChildren();
+    categories.forEach(category => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = category;
+      button.className = category === eduState.category ? 'active' : '';
+      button.addEventListener('click', () => {
+        eduState.category = category;
+        renderEducationResources(eduState.resources);
+      });
+      filters.appendChild(button);
+    });
+    if (!categories.includes(eduState.category)) eduState.category = '全部';
+    renderEducationResourceCards();
+  }
+
+  function renderEducationResourceCards() {
+    const grid = document.getElementById('eduResourceGrid');
+    const visible = eduState.category === '全部'
+      ? eduState.resources
+      : eduState.resources.filter(resource => (resource.category || '其他資源') === eduState.category);
+    grid.replaceChildren();
+    if (!visible.length) {
+      const empty = document.createElement('p');
+      empty.className = 'edu-resource-empty';
+      empty.textContent = eduState.resources.length ? '此分類目前沒有資源。' : '教材整理中，請稍後再回來查看。';
+      grid.appendChild(empty);
+    } else {
+      visible.forEach((resource, index) => grid.appendChild(createEducationResourceCard(resource, index)));
+    }
+    document.getElementById('eduResourceCount').textContent = `顯示 ${visible.length} 項，共 ${eduState.resources.length} 項資源`;
+  }
+
+  function createEducationResourceCard(resource, index) {
+    const card = document.createElement('a');
+    card.href = resource.url;
+    card.target = '_blank';
+    card.rel = 'noopener noreferrer';
+    if (index === 0) card.classList.add('featured');
+
+    const top = document.createElement('div');
+    top.className = 'edu-resource-top';
+    const type = document.createElement('span');
+    type.textContent = eduTypeLabels[resource.resource_type] || resource.resource_type || '教育資源';
+    const category = document.createElement('small');
+    category.textContent = resource.category || '教育資源';
+    top.append(type, category);
+
+    const title = document.createElement('h3');
+    title.textContent = resource.title || '未命名資源';
+    const description = document.createElement('p');
+    description.textContent = resource.description || '點擊開啟此項教育資源。';
+    const bottom = document.createElement('div');
+    bottom.className = 'edu-resource-bottom';
+    const minutes = document.createElement('span');
+    minutes.textContent = resource.estimated_minutes ? `約 ${resource.estimated_minutes} 分鐘` : (resource.is_required ? '建議閱讀' : '延伸資源');
+    const arrow = document.createElement('span');
+    arrow.setAttribute('aria-hidden', 'true');
+    arrow.textContent = '↗';
+    bottom.append(minutes, arrow);
+
+    card.append(top, title, description, bottom);
+    return card;
+  }
+
+  function educationPeriod(startDate, endDate) {
+    if (!startDate && !endDate) return '已開放';
+    if (startDate && endDate) return `${educationDate(startDate)}－${educationDate(endDate)}`;
+    return startDate ? `${educationDate(startDate)}起` : `至${educationDate(endDate)}`;
+  }
+
+  function educationDate(value) {
+    if (!value) return '';
+    const parts = String(value).split('-');
+    return parts.length === 3 ? `${parts[0]}/${Number(parts[1])}/${Number(parts[2])}` : String(value);
+  }
+
+  function showEducationError(error) {
+    document.getElementById('eduLoading').hidden = true;
+    document.getElementById('eduApp').hidden = true;
+    document.getElementById('eduErrorMessage').textContent = error && error.message ? error.message : String(error);
+    document.getElementById('eduError').hidden = false;
+  }
+</script>
+
+  <div class="demo-ribbon" aria-label="展示版">AI 虛擬資料展示版｜不連接正式校務資料</div></body>
+</html>
